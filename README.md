@@ -1,3 +1,16 @@
+添加组件流程
+
+在目录 pc 或 mobile  执行
+```shell
+gods-pen create  XXXX
+cd XXXX 
+npm run start  
+
+
+
+```
+
+
 ## 介绍
 模板项目分位3大模块
 
