@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "packages/mobile/*",
+    "packages/pc/*"
+  ],
+  "version": "0.0.0"
+}

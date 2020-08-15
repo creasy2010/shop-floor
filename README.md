@@ -2,13 +2,22 @@
 
 在目录 pc 或 mobile  执行
 ```shell
+
 gods-pen create  XXXX
 cd XXXX 
-npm run start  
-
-
+yarn
+npm run start
 
 ```
+slideshow
+catenavi
+title
+goods-list
+
+
+
+
+
 
 
 ## 介绍
