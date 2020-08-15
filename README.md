@@ -7,16 +7,7 @@ gods-pen create  XXXX
 cd XXXX 
 yarn
 npm run start
-
 ```
-slideshow
-catenavi
-title
-goods-list
-
-
-
-
 
 
 
