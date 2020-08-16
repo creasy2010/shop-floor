@@ -67,6 +67,7 @@
   .en-title{
     font-size :0.375rem;
     color:#fff;
+    transform :scale(0.5);
   }
   .goods-main{
     width:100%;
@@ -117,8 +118,8 @@
   .unit{
     font-size :0.5rem;
     color:#000;
-    margin-right :0.1rem;
     transform :scale(0.67);
+    transform-origin :left;
   }
   .price{
     font-size :0.875rem;
