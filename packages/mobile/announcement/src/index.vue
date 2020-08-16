@@ -1,6 +1,10 @@
 <template>
-  <div class="component">
-    hello world
+  <div class="annouceComment">
+    <div class="annouce-box">
+      <img class="notice-icon" src="./assets/notice.png"/>
+      <span class="notice-label">公告：</span>
+      <spna class="notice-content">公告：本店应装修升级，部分家具暂时无货，请谨慎选择......</spna>
+    </div>
   </div>
 </template>
 
@@ -27,8 +31,33 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" type="text/stylus" scoped>
-  .component {
+  .annouceComment {
     width: 100%;
     height: 100%;
+  }
+  .annouce-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0.75rem;
+    height: 1.875rem;
+    background: #FEFFBE;
+  }
+  .notice-icon{
+    width: 1.03rem;
+    height: 0.875rem;
+    margin-right 0.4375rem;
+  }
+  .notice-label{
+    font-size:0.875rem ;
+    color: #333;
+  }
+  .notice-content{
+    font-size:0.875rem ;
+    color: #333;
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 </style>

@@ -1,6 +1,26 @@
 <template>
-  <div class="component">
-    hello world
+  <div class="goodsList">
+    <el-header class="goods-header">
+      <span class="cn-title">更多推荐</span>
+      <span class="en-title">MORE recommendation</span>
+    </el-header>
+    <el-main class="goods-main">
+      <div class="goods-item" v-for="item in 4">
+        <img class="goods-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg" />
+        <div class="goods-info">
+          <div class="goods-title">品牌名称商品名称品牌名称商品名称 </div>
+          <div class="goods-price-info">
+            <div class="left-price">
+              <span class="unit">RMB</span>
+              <span class="price">580.00</span>
+            </div>
+            <div class="right-promotion">
+              <span class="promotion-price">满150-100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </el-main>
   </div>
 </template>
 
@@ -27,8 +47,94 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" type="text/stylus" scoped>
-  .component {
+  .goodsList {
     width: 100%;
     height: 100%;
+  }
+  .goods-header{
+    width:100%;
+    height:4.8125rem;
+    background:#848F79;
+    display :flex;
+    flex-direction :column;
+    align-items :center;
+    justify-content :center;
+  }
+  .cn-title{
+    font-size :1.125rem;
+    color:#fff;
+  }
+  .en-title{
+    font-size :0.375rem;
+    color:#fff;
+  }
+  .goods-main{
+    width:100%;
+    background :#f4f4f4;
+    padding:1.5625rem 0.75rem;
+    display flex;
+    flex-direction: row;
+    flex-wrap :wrap;
+    justify-content :space-between;
+  }
+  .goods-item{
+    width:calc((100% - 0.2rem)/2);
+    display :flex;
+    flex-direction :column;
+    position:relative;
+    margin-bottom :0.25rem;
+  }
+  .goods-img{
+    width:100%;
+  }
+  .goods-info{
+    display :flex;
+    flex-direction :column;
+    background :#EEEEEE;
+    padding:0.625rem 0.5rem;
+  }
+  .goods-title{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    overflow: hidden;
+    font-size:0.75rem;
+    color:#000;
+    margin-bottom :0.625rem;
+  }
+  .goods-price-info{
+    display :flex;
+    flex-direction :row;
+    justify-content: space-between;
+    align-items :center;
+  }
+  .left-price{
+    display :flex;
+    flex-direction :row;
+    align-items :flex-end;
+  }
+  .unit{
+    font-size :0.5rem;
+    color:#000;
+    margin-right :0.1rem;
+    transform :scale(0.67);
+  }
+  .price{
+    font-size :0.875rem;
+    color:#EB0000;
+  }
+  .right-promotion{
+    height:1rem;
+    border-radius :0.5625rem;
+    border:1px solid #EB0000;
+    display:flex;
+    align-items:center;
+    justify-content :center;
+  }
+  .promotion-price{
+    font-size :0.75rem;
+    transform :scale(0.833);
+    color:#EB0000;
   }
 </style>

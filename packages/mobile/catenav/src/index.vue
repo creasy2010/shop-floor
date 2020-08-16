@@ -1,6 +1,11 @@
 <template>
-  <div class="component">
-    hello world
+  <div class="catenav">
+    <div class="nav-box">
+      <div class="nav-item" v-for="(item) in catelist">
+        <img class="nav-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg"/>
+        <span class="nav-text">{{ item }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,14 +26,51 @@
     },
     editorMethods: {
     },
+    data: function () {
+      return {
+        catelist: [],
+      }
+    },
+    mounted: function () {
+      this.addcate()
+    },
     methods: {
-    }
+      addcate: function () {
+        let cates = ['餐桌', '餐椅', '沙发', '床', '床垫', '灯', '橱柜', '办公家具']
+        this.catelist = cates
+      },
+    },
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" type="text/stylus" scoped>
-  .component {
+  .catenav {
     width: 100%;
     height: 100%;
+  }
+  .nav-box{
+    display flex;
+    flex-direction row;
+    justify-content space-between;
+    flex-wrap wrap;
+    background :#f4f4f4;
+    padding:1.5625rem 0.2rem 0.5625rem;
+  }
+  .nav-item{
+    width:25%;
+    display flex;
+    flex-direction column;
+    align-items center;
+    margin-bottom :1rem;
+  }
+  .nav-img{
+    width:3.75rem;
+    height:3.75rem;
+    border-radius :100%;
+    margin-bottom :0.375rem;
+  }
+  .nav-text{
+    font-size :0.75rem;
+    color:#000;
   }
 </style>

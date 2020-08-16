@@ -1,12 +1,15 @@
 <template>
-  <div class="component">
-    hello world
+  <div class="slideshow">
+    <el-carousel class="carousel-box">
+      <el-carousel-item v-for="item in imagelist" :key="item">
+        <img class="image" :src="item"/>
+      </el-carousel-item>
+    </el-carousel>
   </div>
 </template>
 
 <script>
   import {VueExtend} from 'godspen-lib'
-
   export default {
     mixins: [VueExtend.mixin],
     name: 'slideshow',
@@ -21,14 +24,33 @@
     },
     editorMethods: {
     },
+    data: function () {
+      return {
+        imagelist: [],
+      }
+    },
+    mounted: function () {
+      this.addimage()
+    },
     methods: {
-    }
+      addimage: function () {
+        this.imagelist = ['./src/assets/1.png', './src/assets/2.png', './src/assets/3.png', './src/assets/4.png']
+      },
+    },
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" type="text/stylus" scoped>
-  .component {
+  .slideshow {
     width: 100%;
     height: 100%;
+  }
+  .carousel-box{
+    width:100%;
+    height:23.97rem;
+  }
+  .image{
+    width:100%;
+    height:100%;
   }
 </style>
