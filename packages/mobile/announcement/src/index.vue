@@ -2,8 +2,8 @@
   <div class="annouceComment">
     <div class="annouce-box">
       <img class="notice-icon" src="./assets/notice.png"/>
-      <span class="notice-label">公告：</span>
-      <spna class="notice-content">公告：本店应装修升级，部分家具暂时无货，请谨慎选择......</spna>
+      <span class="notice-label">{{title}}</span>
+      <spna class="notice-content">{{ content }}</spna>
     </div>
   </div>
 </template>
@@ -20,6 +20,16 @@
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
+      title: {
+        label: '标题',
+        desc: '标题',
+        type: String
+      },
+      content: {
+        label: '内容',
+        desc: '公告内容',
+        type: String
+      },
     },
     computed: {
     },

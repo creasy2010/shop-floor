@@ -8,6 +8,9 @@
   export default {
     name: 'maliangeditor',
     props: {
+      foo: {
+        type: String
+      },
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
       componentInfo: { // 固定字段，收集所有属性值
         type: [Object],
