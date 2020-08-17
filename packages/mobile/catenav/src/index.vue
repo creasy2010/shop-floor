@@ -5,6 +5,9 @@
         <img class="nav-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg"/>
         <span class="nav-text">{{ item }}</span>
       </div>
+      1111
+      {{navs}}
+      111
     </div>
   </div>
 </template>
@@ -21,6 +24,12 @@
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
+      navs: { // 所有格子的配置信息
+        type: Array,
+        editor: {
+          ignore: true // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+        }
+      }
     },
     computed: {
     },
