@@ -1,7 +1,7 @@
 <template>
   <div class="slideshow">
     <el-carousel class="carousel-box">
-      <el-carousel-item v-for="item in imagelist" :key="item">
+      <el-carousel-item v-for="item in images" :key="item">
         <img class="image" :src="item"/>
       </el-carousel-item>
     </el-carousel>
@@ -19,24 +19,21 @@
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
+      images: { // 所有格子的配置信息
+        type: Array,
+        editor: {
+          ignore: true // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+        }
+      }
     },
     computed: {
     },
     editorMethods: {
     },
     data: function () {
-      return {
-        imagelist: [],
-      }
     },
-    mounted: function () {
-      this.addimage()
-    },
-    methods: {
-      addimage: function () {
-        this.imagelist = ['./src/assets/1.png', './src/assets/2.png', './src/assets/3.png', './src/assets/4.png']
-      },
-    },
+    mounted: function () {},
+    methods: {},
   }
 </script>
 
