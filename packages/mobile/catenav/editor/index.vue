@@ -1,6 +1,5 @@
 <template>
   <div class="component-editor">
-
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>分类设置</span>
@@ -21,7 +20,7 @@
             <el-form-item label="图片">
               <attr-resource type="image" :url.sync="item.img"></attr-resource>
             </el-form-item>
-            <el-form-item label="跳转罗拉">
+            <el-form-item label="跳转">
               <attr-resource type="text" :url.sync="item.url"></attr-resource>
             </el-form-item>
             <el-form-item label="">
@@ -63,6 +62,7 @@
       // 增加一个格子项
       addItem: function () {
         // 如果不存在 navs 属性，应主动添加响应式属性
+        debugger
         if (!this.componentInfo.navs) this.$set(this.componentInfo, 'navs', [])
         this.componentInfo.navs.push({
           img: 'http://iph.href.lu/160x40?text=激活&fg=FF0000&bg=CCCCCC',
