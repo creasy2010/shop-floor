@@ -1,6 +1,6 @@
 <template>
   <div class="slideshow">
-    <el-carousel class="carousel-box">
+    <el-carousel class="carousel-box" :style="{height:imgHeight}">
       <el-carousel-item v-for="item in images" :key="item">
         <img class="image" :src="item"/>
       </el-carousel-item>
@@ -24,6 +24,9 @@
         editor: {
           ignore: true // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
         }
+      },
+      imgHeight: {
+        type: String,
       }
     },
     computed: {
@@ -31,8 +34,14 @@
     editorMethods: {
     },
     data: function () {
+
     },
-    mounted: function () {},
+    mounted: function () {
+      console.log(this)
+    },
+    updated: function () {
+      console.log(this)
+    },
     methods: {},
   }
 </script>
@@ -44,7 +53,7 @@
   }
   .carousel-box{
     width:100%;
-    height:23.97rem;
+    /*height:23.97rem;*/
   }
   .image{
     width:100%;

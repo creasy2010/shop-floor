@@ -1,15 +1,26 @@
 <template>
   <div class="component-editor">
-    <div class="add-image" @click="addItem">
-      <i class="el-icon-plus icon"></i>
-    </div>
-    <div class="tips">（图片格式仅限jpeg、jpg、png、gif，建议尺寸：750x335）</div>
-    <div class="imgs-box" v-for="(item,index) in this.componentInfo.images" :key="item">
-      <img class="img" :src="item" @mouseover="mouseOver()" @mouseleave="mouseLeave()"/>
-      <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
-        <i class="el-icon-delete"></i>
-      </div>
-    </div>
+    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+      <el-tab-pane label="换图" name="first">
+        <div class="add-image" @click="addItem">
+          <i class="el-icon-plus icon"></i>
+        </div>
+        <div class="tips">（图片格式仅限jpeg、jpg、png、gif，建议尺寸：750x335）</div>
+        <div class="imgs-box" v-for="(item,index) in this.componentInfo.images" :key="item">
+          <img class="img" :src="item" @mouseover="mouseOver()" @mouseleave="mouseLeave()"/>
+          <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
+            <i class="el-icon-delete"></i>
+          </div>
+        </div>
+      </el-tab-pane>
+      <el-tab-pane label="设置" name="second">
+        <el-radio-group v-model="radio" @change="changeradio">
+          <el-radio :label="1">默认尺寸</el-radio>
+          <el-radio :label="2">大图</el-radio>
+          <el-radio :label="3">小图</el-radio>
+        </el-radio-group>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
@@ -29,6 +40,8 @@
     data: function () {
       return {
         usedatasource: false,
+        activeName: 'first',
+        radio: 1
       }
     },
     computed: {
@@ -44,7 +57,19 @@
     mounted: function () {
     },
     methods: {
-      //新增
+      // tag切换
+      handleClick: function (tab) {
+        this.activeName = tab.name
+      },
+      // 尺寸切换
+      changeradio: function (val) {
+        this.radio = val
+        let height = '5.25rem' // 默认高度
+        if (val == 2) height = '8.375rem'  // 大图尺寸
+        if (val == 3) height = '3.6875rem'
+        if (!this.componentInfo.imgHeight) this.$set(this.componentInfo, 'imgHeight', height)
+      },
+      // 新增
       addItem: function () {
         if (!this.componentInfo.images) this.$set(this.componentInfo, 'images', [])
         this.componentInfo.images.push(
@@ -56,11 +81,11 @@
         this.componentInfo.images.splice(index, 1)
       },
       // 移入
-      mouseOver() {
+      mouseOver: function () {
 
       },
       // 移出
-      mouseLeave() {
+      mouseLeave: function () {
 
       }
     }
