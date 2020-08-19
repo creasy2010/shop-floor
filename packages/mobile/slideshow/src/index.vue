@@ -34,15 +34,18 @@
     editorMethods: {
     },
     data: function () {
-
+      return {
+      }
     },
     mounted: function () {
-      console.log(this)
+
     },
     updated: function () {
       console.log(this)
     },
-    methods: {},
+    methods: {
+
+    },
   }
 </script>
 

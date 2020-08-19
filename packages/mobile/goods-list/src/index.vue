@@ -37,10 +37,20 @@
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
+      checklist: {
+        type: Array,
+        editor: {
+          ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+          default: []
+        }
+      },
     },
     computed: {
     },
     editorMethods: {
+    },
+    mounted: function () {
+      console.log(this.checklist)
     },
     methods: {
     }

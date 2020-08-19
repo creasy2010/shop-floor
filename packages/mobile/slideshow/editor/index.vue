@@ -21,11 +21,14 @@
         </el-radio-group>
       </el-tab-pane>
     </el-tabs>
+    <imagechoose :compromise="selectImg"></imagechoose>
   </div>
 </template>
 
 <script>
+  import Imagechoose from '../preview/lib/dialog/image-choose'
   export default {
+    components: {Imagechoose},
     name: 'maliangeditor',
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
@@ -41,7 +44,8 @@
       return {
         usedatasource: false,
         activeName: 'first',
-        radio: 1
+        radio: 1,
+        selectImg: false
       }
     },
     computed: {
@@ -71,6 +75,7 @@
       },
       // 新增
       addItem: function () {
+        this.selectImg = true
         if (!this.componentInfo.images) this.$set(this.componentInfo, 'images', [])
         this.componentInfo.images.push(
           `./src/assets/${this.componentInfo.images.length + 1}.png`
