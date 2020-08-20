@@ -12,7 +12,6 @@
   </span>
   </el-dialog>
 </template>
-
 <script>
 
 export default {
@@ -25,7 +24,7 @@ export default {
   },
   mounted () {
     //监听选择图片的速与;
-    window.chooseLink=(option,calBack)=>{
+    window.chooseImage=(option,calBack)=>{
       //显示链接弹窗, 选择后返回;
       calBack(this.value);
     }
