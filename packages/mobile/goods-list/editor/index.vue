@@ -14,7 +14,7 @@
         <i class="el-icon-plus icon"></i>
       </div>
     </div>
-    <linkChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @goodsInfo="getGoodsInfo"></linkChoose>
+<!--    <linkChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @goodsInfo="getGoodsInfo"></linkChoose>-->
 <!--      <ImageChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @selectData="getSelectData"></ImageChoose>-->
   </div>
 </template>
@@ -78,6 +78,9 @@
       // 新增
       addItem: function () {
         this.dialogFormVisible = true
+        window(()=>{
+
+        })
       },
       // 关闭弹窗
       closeModal: function (val) {
