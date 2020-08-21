@@ -26,17 +26,17 @@ const COMPONENT_PATH = '__NAMESPACE__/__NAME__@__VERSION__'
 let config = {
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, './preview')],
-        exclude: [path.resolve(__dirname, './preview/mint-ui/')],
-        options: {
-          formatter: require('eslint-friendly-formatter'),
-          emitWarning: false
-        }
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, './preview')],
+      //   exclude: [path.resolve(__dirname, './preview/mint-ui/')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter'),
+      //     emitWarning: false
+      //   }
+      // },
       {
         test: /\.css$/,
         use: [
