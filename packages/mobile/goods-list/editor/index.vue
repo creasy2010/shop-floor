@@ -9,6 +9,9 @@
       <el-checkbox v-for="item in goodsOptions" :label="item.id" :key="item.id">{{item.label}}</el-checkbox>
     </el-checkbox-group>
     <div class="goods-title">商品数据来源:</div>
+    <div  v-for="item in componentInfo.fixGoodsList">
+     {{item.name}}
+    </div>
     <div class="image-box">
       <div class="add-image" @click="addItem">
         <i class="el-icon-plus icon"></i>
@@ -29,11 +32,12 @@
     name: 'maliangeditor',
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
-      componentInfo: { // 固定字段，收集所有属性值
-        type: [Object],
-        default () {
-          return {
-          }
+      componentInfo: {
+        fixGoodsList: Array,
+        sourceType: String, // fix
+        option: {
+          isShowName: Boolean,
+          isShowPrice: Boolean,
         }
       }
     },
@@ -49,7 +53,6 @@
           {label: '角标', id: 4},
         ],
         checkList: [],
-        fixGoodsList:[]
       }
     },
     computed: {
@@ -63,6 +66,14 @@
       }
     },
     mounted: function () {
+      if (!this.componentInfo.fixGoodsList){
+        this.$set(this.componentInfo, 'fixGoodsList', [])
+      }
+
+      if (!this.componentInfo.goodsOptions){
+        this.$set(this.componentInfo, 'goodsOptions', [])
+      }
+
     },
     methods: {
       // tag切换
@@ -84,12 +95,12 @@
 
         if(window.xExtend && window.xExtend.chooseGoods){
           window.xExtend.chooseGoods({
-            onSubmit: (goods)=>{
-              this.fixGoodsList = this.fixGoodsList.concat(goods)
+            onSubmit: (goods) => {
+              this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat(goods)
             }
-          });
+          })
         } else {
-          this.fixGoodsList = this.fixGoodsList.concat([{
+          this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat([{
               barcode: null,
               bn: null,
               brandId: 2872817173708800,

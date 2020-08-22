@@ -1,90 +1,91 @@
 <template>
   <div class="goodsList">
-    <el-header class="goods-header">
-      <span class="cn-title">更多推荐</span>
-      <span class="en-title">MORE recommendation</span>
-    </el-header>
-    <el-main class="goods-main">
-      <div class="goods-item" v-for="item in (fixGoodsList || [
-          [{
-              barcode: null,
-              bn: null,
-              brandId: 2872817173708800,
-              brandName: '大众',
-              categoryId: 2866547706200064,
-              categoryName: '单肩包',
-              id: 2911477832302592,
-              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
-              name: '多规格商品 红色大',
-              price: 11,
-              spuId: 2911473872142336,
-              status: 'OFFLINE',
-              statusText: '已下架',
-              stock: 1111
-            },{
-              barcode: null,
-              bn: null,
-              brandId: 2872817173708800,
-              brandName: '大众',
-              categoryId: 2866547706200064,
-              categoryName: '单肩包',
-              id: 2911477832302592,
-              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
-              name: '多规格商品 红色大',
-              price: 11,
-              spuId: 2911473872142336,
-              status: 'OFFLINE',
-              statusText: '已下架',
-              stock: 1111
-            },{
-              barcode: null,
-              bn: null,
-              brandId: 2872817173708800,
-              brandName: '大众',
-              categoryId: 2866547706200064,
-              categoryName: '单肩包',
-              id: 2911477832302592,
-              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
-              name: '多规格商品 红色大',
-              price: 11,
-              spuId: 2911473872142336,
-              status: 'OFFLINE',
-              statusText: '已下架',
-              stock: 1111
-            },{
-              barcode: null,
-              bn: null,
-              brandId: 2872817173708800,
-              brandName: '大众',
-              categoryId: 2866547706200064,
-              categoryName: '单肩包',
-              id: 2911477832302592,
-              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
-              name: '多规格商品 红色大',
-              price: 11,
-              spuId: 2911473872142336,
-              status: 'OFFLINE',
-              statusText: '已下架',
-              stock: 1111
-            }
-          ]
-      ])">
-        <div class="recommen"><span class="recommen-text">{{item.name}}}</span></div>
-        <img class="goods-img" v-bind:src="item.image" />
-        <div class="goods-info">
-          <div class="goods-title">{{item.brandName}}</div>
-          <div class="goods-price-info">
-            <div class="left-price">
-              <span class="unit">RMB</span>
-              <span class="price">{{item.price}}</span>
-            </div>
-            <div class="right-promotion">
-              <span class="promotion-price">满150-100</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </el-main>
+<!--    <el-header class="goods-header">-->
+<!--      <span class="cn-title">更多推荐</span>-->
+<!--      <span class="en-title">MORE recommendation</span>-->
+<!--    </el-header>-->
+    选中商品{{fixGoodsList.length}}
+<!--    <el-main class="goods-main">-->
+<!--      <div class="goods-item" v-for="item in ([-->
+<!--          [{-->
+<!--              barcode: null,-->
+<!--              bn: null,-->
+<!--              brandId: 2872817173708800,-->
+<!--              brandName: '大众',-->
+<!--              categoryId: 2866547706200064,-->
+<!--              categoryName: '单肩包',-->
+<!--              id: 2911477832302592,-->
+<!--              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',-->
+<!--              name: '多规格商品 红色大',-->
+<!--              price: 11,-->
+<!--              spuId: 2911473872142336,-->
+<!--              status: 'OFFLINE',-->
+<!--              statusText: '已下架',-->
+<!--              stock: 1111-->
+<!--            },{-->
+<!--              barcode: null,-->
+<!--              bn: null,-->
+<!--              brandId: 2872817173708800,-->
+<!--              brandName: '大众',-->
+<!--              categoryId: 2866547706200064,-->
+<!--              categoryName: '单肩包',-->
+<!--              id: 2911477832302592,-->
+<!--              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',-->
+<!--              name: '多规格商品 红色大',-->
+<!--              price: 11,-->
+<!--              spuId: 2911473872142336,-->
+<!--              status: 'OFFLINE',-->
+<!--              statusText: '已下架',-->
+<!--              stock: 1111-->
+<!--            },{-->
+<!--              barcode: null,-->
+<!--              bn: null,-->
+<!--              brandId: 2872817173708800,-->
+<!--              brandName: '大众',-->
+<!--              categoryId: 2866547706200064,-->
+<!--              categoryName: '单肩包',-->
+<!--              id: 2911477832302592,-->
+<!--              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',-->
+<!--              name: '多规格商品 红色大',-->
+<!--              price: 11,-->
+<!--              spuId: 2911473872142336,-->
+<!--              status: 'OFFLINE',-->
+<!--              statusText: '已下架',-->
+<!--              stock: 1111-->
+<!--            },{-->
+<!--              barcode: null,-->
+<!--              bn: null,-->
+<!--              brandId: 2872817173708800,-->
+<!--              brandName: '大众',-->
+<!--              categoryId: 2866547706200064,-->
+<!--              categoryName: '单肩包',-->
+<!--              id: 2911477832302592,-->
+<!--              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',-->
+<!--              name: '多规格商品 红色大',-->
+<!--              price: 11,-->
+<!--              spuId: 2911473872142336,-->
+<!--              status: 'OFFLINE',-->
+<!--              statusText: '已下架',-->
+<!--              stock: 1111-->
+<!--            }-->
+<!--          ]-->
+<!--      ])">-->
+<!--        <div class="recommen"><span class="recommen-text">{{item.name}}}</span></div>-->
+<!--        <img class="goods-img" v-bind:src="item.image" />-->
+<!--        <div class="goods-info">-->
+<!--          <div class="goods-title">{{item.brandName}}</div>-->
+<!--          <div class="goods-price-info">-->
+<!--            <div class="left-price">-->
+<!--              <span class="unit">RMB</span>-->
+<!--              <span class="price">{{item.price}}</span>-->
+<!--            </div>-->
+<!--            <div class="right-promotion">-->
+<!--              <span class="promotion-price">满150-100</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </el-main>-->
   </div>
 </template>
 
@@ -106,7 +107,8 @@
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
           default: []
         }
-      },fixGoodsList: {
+      },
+      fixGoodsList: {
         type: Array,
         editor: {
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
