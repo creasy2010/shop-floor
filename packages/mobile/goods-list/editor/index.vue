@@ -9,12 +9,15 @@
       <el-checkbox v-for="item in goodsOptions" :label="item.id" :key="item.id">{{item.label}}</el-checkbox>
     </el-checkbox-group>
     <div class="goods-title">商品数据来源:</div>
-    <div  v-for="item in componentInfo.fixGoodsList">
-     {{item.name}}
-    </div>
     <div class="image-box">
       <div class="add-image" @click="addItem">
         <i class="el-icon-plus icon"></i>
+      </div>
+      <div class="add-image" v-for="(item,index) in componentInfo.fixGoodsList">
+        <img class="img" :src="item.image" />
+        <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
+          <i class="el-icon-delete"></i>
+        </div>
       </div>
     </div>
     <linkChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @goodsInfo="getGoodsInfo"></linkChoose>
@@ -123,6 +126,11 @@
           ])
         }
       },
+      // 删除
+      deleteItem (item, index) {
+        this.componentInfo.fixGoodsList.splice(index, 1)
+        this.list.splice(index, 1)
+      },
       // 关闭弹窗
       closeModal: function (val) {
         this.dialogFormVisible = val
@@ -186,10 +194,32 @@
     align-items :center;
     justify-content :center;
     cursor:pointer;
+    margin-right :0.35rem;
+    margin-bottom :0.35rem;
+    position:relative;
   }
   .icon{
     color:#666;
     font-size :1rem;
     font-weight:bold;
+  }
+  .img{
+    width:100%;
+  }
+  .icon-del{
+    position:absolute;
+    right:0rem;
+    top:0rem;
+    width:1.4rem;
+    height:1.4rem;
+    border-radius :100%;
+    background :rgba(000,000,000,0.4);
+    display :flex;
+    align-items :center;
+    justify-content :center;
+  }
+  .el-icon-delete{
+    font-size :0.75rem;
+    color:#fff;
   }
 </style>

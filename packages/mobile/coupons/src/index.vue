@@ -1,11 +1,11 @@
 <template>
   <div class="coupons">
     <el-main class="coupons-main">
-      <div class="coupon-item" v-for="item in 4">
+      <div class="coupon-item" v-for="item in couponList">
         <div class="coupon-box">
           <span class="coupon-title">优惠券</span>
-          <span class="coupon-price">20</span>
-          <span class="coupon-use">无门槛使用</span>
+          <span class="coupon-price">{{item.price}}</span>
+          <span class="coupon-use">{{item.type}}</span>
         </div>
       </div>
     </el-main>
@@ -24,6 +24,13 @@
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
+      couponList: {
+        type: Array,
+        editor: {
+          ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+          default: []
+        }
+      },
     },
     computed: {
     },
@@ -45,6 +52,7 @@
     padding:1.5625rem 0rem;
     display flex;
     flex-direction: row;
+    flex-wrap :wrap;
   }
   .coupon-item{
     width:25%;
@@ -52,6 +60,7 @@
     flex-direction :column;
     align-items :center;
     justify-content :center;
+    margin-bottom :0.5rem;
   }
    .coupon-box{
      width:4.59375rem;
