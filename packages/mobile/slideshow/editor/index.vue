@@ -6,8 +6,8 @@
           <i class="el-icon-plus icon"></i>
         </div>
         <div class="tips">（图片格式仅限jpeg、jpg、png、gif，建议尺寸：750x335）</div>
-        <div class="imgs-box" v-for="(item,index) in this.componentInfo.images" :key="item">
-          <img class="img" :src="item" @mouseover="mouseOver()" @mouseleave="mouseLeave()"/>
+        <div class="imgs-box" v-for="(item,index) in componentInfo.swiperImages" :key="item">
+          <img class="img" :src="item" >
           <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
             <i class="el-icon-delete"></i>
           </div>
@@ -21,23 +21,17 @@
         </el-radio-group>
       </el-tab-pane>
     </el-tabs>
-    <imagechoose :compromise="selectImg"></imagechoose>
   </div>
 </template>
 
 <script>
-  import Imagechoose from '../preview/lib/dialog/image-choose'
   export default {
-    components: {Imagechoose},
     name: 'maliangeditor',
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
       componentInfo: { // 固定字段，收集所有属性值
-        type: [Object],
-        default () {
-          return {
-          }
-        }
+        imgHeight: String,
+        swiperImages: Array
       }
     },
     data: function () {
@@ -59,6 +53,12 @@
       }
     },
     mounted: function () {
+      if (!this.componentInfo.imgHeight) {
+        this.$set(this.componentInfo, 'imgHeight', '5.25rem')
+      }
+      if (!this.componentInfo.swiperImages) {
+        this.$set(this.componentInfo, 'swiperImages', [])
+      }
     },
     methods: {
       // tag切换
@@ -71,28 +71,19 @@
         let height = '5.25rem' // 默认高度
         if (val == 2) height = '8.375rem'  // 大图尺寸
         if (val == 3) height = '3.6875rem'
-        if (!this.componentInfo.imgHeight) this.$set(this.componentInfo, 'imgHeight', height)
+        this.componentInfo.imgHeight = height
       },
       // 新增
       addItem: function () {
         this.selectImg = true
-        if (!this.componentInfo.images) this.$set(this.componentInfo, 'images', [])
-        this.componentInfo.images.push(
-          `./src/assets/${this.componentInfo.images.length + 1}.png`
-        )
+        this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat([
+          'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0'
+        ])
       },
       // 删除
       deleteItem (item, index) {
-        this.componentInfo.images.splice(index, 1)
+        this.componentInfo.swiperImages.splice(index, 1)
       },
-      // 移入
-      mouseOver: function () {
-
-      },
-      // 移出
-      mouseLeave: function () {
-
-      }
     }
   }
 </script>
