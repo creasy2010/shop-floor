@@ -17,7 +17,7 @@
         <i class="el-icon-plus icon"></i>
       </div>
     </div>
-<!--    <linkChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @goodsInfo="getGoodsInfo"></linkChoose>-->
+    <linkChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @goodsInfo="getGoodsInfo"></linkChoose>
 <!--      <ImageChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @selectData="getSelectData"></ImageChoose>-->
   </div>
 </template>
@@ -27,7 +27,7 @@
   // import ImageChoose from '../preview/lib/dialog/image-choose'
   export default {
     components: {
-      // LinkChoose,ImageChoose
+       // LinkChoose
     },
     name: 'maliangeditor',
     props: {
@@ -38,7 +38,8 @@
         option: {
           isShowName: Boolean,
           isShowPrice: Boolean,
-        }
+        },
+        checklist: Array
       }
     },
     data: function () {
@@ -52,7 +53,7 @@
           {label: '显示营销标签', id: 3},
           {label: '角标', id: 4},
         ],
-        checkList: [],
+        checkList: [1, 2, 3, 4],
       }
     },
     computed: {
@@ -66,14 +67,17 @@
       }
     },
     mounted: function () {
-      if (!this.componentInfo.fixGoodsList){
+      if (!this.componentInfo.fixGoodsList) {
         this.$set(this.componentInfo, 'fixGoodsList', [])
       }
 
-      if (!this.componentInfo.goodsOptions){
-        this.$set(this.componentInfo, 'goodsOptions', {})
+      if (!this.componentInfo.checkList) {
+        this.$set(this.componentInfo, 'checkList', this.checkList)
       }
 
+      if (!this.componentInfo.goodsOptions) {
+        this.$set(this.componentInfo, 'goodsOptions', {})
+      }
     },
     methods: {
       // tag切换
@@ -87,13 +91,13 @@
       // 商品设置
       changeCheck: function (val) {
         this.checklist = val
-        if (!this.componentInfo.checklist) this.$set(this.componentInfo, 'checklist', [])
+        this.componentInfo.checklist = this.componentInfo.fixGoodsList.concat(val)
       },
       // 新增
       addItem: function () {
         this.dialogFormVisible = true
 
-        if(window.xExtend && window.xExtend.chooseGoods){
+        if (window.xExtend && window.xExtend.chooseGoods) {
           window.xExtend.chooseGoods({
             onSubmit: (goods) => {
               this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat(goods)
@@ -118,7 +122,6 @@
             }
           ])
         }
-
       },
       // 关闭弹窗
       closeModal: function (val) {

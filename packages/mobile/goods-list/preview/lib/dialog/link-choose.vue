@@ -86,10 +86,12 @@ export default {
   },
   mounted () {
     //监听选择图片的速与;
-    window.chooseLink=(option,calBack)=>{
-      //显示链接弹窗, 选择后返回;
-      calBack(this.value);
-    }
+    window.xExtend.chooseGoods({
+      onSubmit: (goods) => {
+        debugger
+        console.log(goods)
+      }
+    })
   },
   methods: {
     //切换条件
