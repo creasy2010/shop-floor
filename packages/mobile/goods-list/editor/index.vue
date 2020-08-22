@@ -80,10 +80,11 @@
       },
       // 新增
       addItem: function () {
-        this.dialogFormVisible = true;
+        this.dialogFormVisible = true
+
         if(window.xExtend && window.xExtend.chooseGoods){
           window.xExtend.chooseGoods({
-            onSubmit:(goods)=>{
+            onSubmit: (goods)=>{
               this.fixGoodsList = this.fixGoodsList.concat(goods)
             }
           });
@@ -92,20 +93,19 @@
               barcode: null,
               bn: null,
               brandId: 2872817173708800,
-              brandName: "大众",
+              brandName: '大众',
               categoryId: 2866547706200064,
-              categoryName: "单肩包",
+              categoryName: '单肩包',
               id: 2911477832302592,
-              image: "https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0",
-              name: "多规格商品 红色大",
+              image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
+              name: '多规格商品 红色大',
               price: 11,
               spuId: 2911473872142336,
-              status: "OFFLINE",
-              statusText: "已下架",
+              status: 'OFFLINE',
+              statusText: '已下架',
               stock: 1111
             }
           ])
-
         }
 
       },
