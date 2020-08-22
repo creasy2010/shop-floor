@@ -23,6 +23,7 @@
               @click="chooseImage(item, index)"></el-image>
           <el-link type="primary" @click="chooseLink(item, index)">链接</el-link>
           <el-link type="primary" @click="deleteItem(item, index)">删除</el-link>
+          <el-input v-model="item.title" placeholder="请输入内容"></el-input>
 
 <!--          <el-form :model="item" label-width="100px" size="mini">-->
 <!--            <el-form-item label="图片">-->
@@ -73,11 +74,12 @@
         this.componentInfo.navs.push({
           img: 'http://iph.href.lu/160x40?text=激活&fg=FF0000&bg=CCCCCC',
           linkInfo: null,
+          title: '',
         })
       },
       // 复制一个格子项
       copyItem () {
-        var item = this.componentInfo.navs[this.componentInfo.navs.length - 1]
+        const item = this.componentInfo.navs[this.componentInfo.navs.length - 1]
         if (!item || typeof item !== 'object') return this.addItem()
         this.componentInfo.navs.push(JSON.parse(JSON.stringify(item)))
       },
@@ -100,7 +102,7 @@
         if (window.xExtend && window.xExtend.chooseLink) {
           window.xExtend.chooseLink({
             onSubmit: ([linkInfo]) => {
-              this.componentInfo.navs[index].linkInfo = linkInfo;
+              this.componentInfo.navs[index].linkInfo = linkInfo
             }
           })
         } else {

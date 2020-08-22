@@ -1,13 +1,10 @@
 <template>
   <div class="catenav">
     <div class="nav-box">
-      <div class="nav-item" v-for="(item) in catelist">
-        <img class="nav-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg"/>
-        <span class="nav-text">{{ item }}</span>
+      <div class="nav-item" v-for="item in navs">
+        <img class="nav-img" :src="item.img|| 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"/>
+        <span class="nav-text">{{ item.title }}</span>
       </div>
-      1111
-      {{navs}}
-      111
     </div>
   </div>
 </template>
@@ -37,17 +34,11 @@
     },
     data: function () {
       return {
-        catelist: [],
       }
     },
     mounted: function () {
-      this.addcate()
     },
     methods: {
-      addcate: function () {
-        let cates = ['餐桌', '餐椅', '沙发', '床', '床垫', '灯', '橱柜', '办公家具']
-        this.catelist = cates
-      },
     },
   }
 </script>
