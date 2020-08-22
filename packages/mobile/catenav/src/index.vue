@@ -39,10 +39,10 @@
     mounted: function () {
     },
     methods: {
-      onClick (payload) {
+      onClick (item) {
         window.parent.postMessage({
           action: 'click',
-          payload: payload
+          payload: item.linkInfo
         })
       }
     },
