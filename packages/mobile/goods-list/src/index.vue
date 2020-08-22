@@ -1,7 +1,7 @@
 <template>
   <div class="goodsList">
     <el-main class="goods-main">
-      <div class="goods-item" v-for="item in (fixGoodsList || [
+      <div class="goods-item" v-on:click="onClick(item)" v-for="item in (fixGoodsList || [
           [{
               barcode: null,
               bn: null,
@@ -89,6 +89,12 @@
       console.log(this.checklist)
     },
     methods: {
+      onClick( skuInfo) {
+        window.parent.postMessage({
+          action: 'click',
+          payload: skuInfo
+        })
+      }
     }
   }
 </script>

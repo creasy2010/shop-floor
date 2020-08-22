@@ -18,7 +18,7 @@
                           v-for="(item, index) in componentInfo.navs" :key="index">
           <el-image
               style="width: 100px; height: 100px"
-              :src="url"
+              :src="url || 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"
               :fit="fit"
               @click="chooseImage(item, index)"></el-image>
           <el-link type="primary" @click="chooseLink(item, index)">链接</el-link>
