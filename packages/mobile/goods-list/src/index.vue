@@ -1,19 +1,19 @@
 <template>
   <div class="goodsList">
-    <el-header class="goods-header">
-      <span class="cn-title">更多推荐</span>
-      <span class="en-title">MORE recommendation</span>
-    </el-header>
+<!--    <el-header class="goods-header">-->
+<!--      <span class="cn-title">更多推荐</span>-->
+<!--      <span class="en-title">MORE recommendation</span>-->
+<!--    </el-header>-->
     <el-main class="goods-main">
-      <div class="goods-item" v-for="item in 4">
-        <div class="recommen"><span class="recommen-text">掌柜推荐</span></div>
-        <img class="goods-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg" />
+      <div class="goods-item" v-for="item in fixGoodsList">
+        <div class="recommen"><span class="recommen-text">{{item.name}}}</span></div>
+        <img class="goods-img" v-bind:src="item.image" />
         <div class="goods-info">
-          <div class="goods-title">品牌名称商品名称品牌名称商品名称 </div>
+          <div class="goods-title">{{item.brandName}}</div>
           <div class="goods-price-info">
             <div class="left-price">
               <span class="unit">RMB</span>
-              <span class="price">580.00</span>
+              <span class="price">{{item.price}}</span>
             </div>
             <div class="right-promotion">
               <span class="promotion-price">满150-100</span>
@@ -38,6 +38,12 @@
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
       checklist: {
+        type: Array,
+        editor: {
+          ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+          default: []
+        }
+      },fixGoodsList: {
         type: Array,
         editor: {
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式

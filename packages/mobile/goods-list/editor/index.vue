@@ -20,10 +20,12 @@
 </template>
 
 <script>
-  import LinkChoose from '../preview/lib/dialog/link-choose'
-  import ImageChoose from '../preview/lib/dialog/image-choose'
+  // import LinkChoose from '../preview/lib/dialog/link-choose'
+  // import ImageChoose from '../preview/lib/dialog/image-choose'
   export default {
-    components: {LinkChoose,ImageChoose},
+    components: {
+      // LinkChoose,ImageChoose
+    },
     name: 'maliangeditor',
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
@@ -47,6 +49,7 @@
           {label: '角标', id: 4},
         ],
         checkList: [],
+        fixGoodsList:[]
       }
     },
     computed: {
@@ -77,10 +80,34 @@
       },
       // 新增
       addItem: function () {
-        this.dialogFormVisible = true
-        window(()=>{
+        this.dialogFormVisible = true;
+        if(window.xExtend && window.xExtend.chooseGoods){
+          window.xExtend.chooseGoods({
+            onSubmit:(goods)=>{
+              this.fixGoodsList = this.fixGoodsList.concat(goods)
+            }
+          });
+        } else {
+          this.fixGoodsList = this.fixGoodsList.concat([{
+              barcode: null,
+              bn: null,
+              brandId: 2872817173708800,
+              brandName: "大众",
+              categoryId: 2866547706200064,
+              categoryName: "单肩包",
+              id: 2911477832302592,
+              image: "https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0",
+              name: "多规格商品 红色大",
+              price: 11,
+              spuId: 2911473872142336,
+              status: "OFFLINE",
+              statusText: "已下架",
+              stock: 1111
+            }
+          ])
 
-        })
+        }
+
       },
       // 关闭弹窗
       closeModal: function (val) {
