@@ -1,7 +1,7 @@
 {
   "name": "goods-list",
   "label": "商品列表",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.1",
   "description": "商品列表",
   "type": 0,
   "tags": [18],
@@ -11,6 +11,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --progress",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "start": "npm run dev",
+    "vv": "gods-pen --help -v",
+
     "build:pack": "gods-pen  pack --skip-push=false --verbose",
     "dist": "npm run build"
   },

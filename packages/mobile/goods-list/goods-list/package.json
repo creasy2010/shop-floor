@@ -1,0 +1,13 @@
+{
+  "name": "yangxiaodong_goods-list",
+  "label": "商品列表",
+  "type": 0,
+  "description": "商品列表",
+  "version": "1.0.0-beta.2",
+  "private": true,
+  "tags": [
+    18
+  ],
+  "size": 19755,
+  "built": true
+}
