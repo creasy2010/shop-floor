@@ -89,7 +89,7 @@
       console.log(this.checklist)
     },
     methods: {
-      onClick( skuInfo) {
+      onClick ( skuInfo) {
         window.parent.postMessage({
           action: 'click',
           payload: skuInfo
