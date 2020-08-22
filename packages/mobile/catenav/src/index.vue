@@ -43,7 +43,7 @@
         window.parent.postMessage({
           action: 'click',
           payload: item.linkInfo
-        },'*')
+        }, '*')
       }
     },
   }
