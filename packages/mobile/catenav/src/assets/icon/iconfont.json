@@ -1,0 +1,16 @@
+{
+  "id": "2022586",
+  "name": "eleThirdIcon",
+  "font_family": "iconfont",
+  "css_prefix_text": "el-icon-third",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11488067",
+      "name": "link",
+      "font_class": "link",
+      "unicode": "e756",
+      "unicode_decimal": 59222
+    }
+  ]
+}

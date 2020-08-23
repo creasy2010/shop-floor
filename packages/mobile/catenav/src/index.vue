@@ -57,7 +57,6 @@
   .nav-box{
     display flex;
     flex-direction row;
-    justify-content space-between;
     flex-wrap wrap;
     background :#f4f4f4;
     padding:1.5625rem 0.2rem 0.5625rem;

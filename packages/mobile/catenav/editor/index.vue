@@ -16,14 +16,17 @@
       <el-collapse v-show="componentInfo.navs && componentInfo.navs.length">
         <el-collapse-item :title="'格子' + (index + 1)"
                           v-for="(item, index) in componentInfo.navs" :key="index">
-          <el-image
-              style="width: 100px; height: 100px"
-              :src="url || 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"
-              :fit="fit"
-              @click="chooseImage(item, index)"></el-image>
-          <el-link type="primary" @click="chooseLink(item, index)">链接</el-link>
-          <el-link type="primary" @click="deleteItem(item, index)">删除</el-link>
-          <el-input v-model="item.title" placeholder="请输入内容"></el-input>
+          <el-main class="main">
+            <el-link type="primary" :class="{ 'active': item.linkInfo,'icon-box':true }" @click="chooseLink(item, index)"><i class="el-icon-share"></i></el-link>
+            <el-link type="primary" class="icon-box" @click="deleteItem(item, index)"><i class="el-icon-delete"></i></el-link>
+          </el-main>
+          <el-main class="main">
+            <img class="choose-img"
+                    :src="item.img || 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"
+                    :fit="fit"
+                    @click="chooseImage(item, index)" />
+            <el-input v-model="item.title" placeholder="请输入内容"></el-input>
+          </el-main>
 
 <!--          <el-form :model="item" label-width="100px" size="mini">-->
 <!--            <el-form-item label="图片">-->
@@ -99,6 +102,7 @@
         }
       },
       chooseLink (item, index) {
+        debugger
         if (window.xExtend && window.xExtend.chooseLink) {
           window.xExtend.chooseLink({
             onSubmit: ([linkInfo]) => {
@@ -115,5 +119,37 @@
 
 <style lang="stylus" rel="stylesheet/stylus" type="text/stylus" scoped>
   .component-editor {
+  }
+  .choose-img{
+    width:32px;
+    height:32px;
+    border-radius :100%;
+    margin-right :10px;
+  }
+  .main{
+    display :flex;
+    flex-direction :row;
+    align-items :center;
+    padding:0;
+    margin-bottom :0.3rem;
+  }
+  .icon-box{
+    background: #333;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    color: #fff;
+    border-radius: 100%;
+    opacity: .8;
+    cursor: pointer;
+    display : flex;
+    align-items :center;
+    justify-content :center;
+  }
+  .active{
+    color:#108ee9;
+  }
+  i{
+    font-size :14px;
   }
 </style>
