@@ -5,7 +5,7 @@
         <div class="coupon-box">
           <span class="coupon-title">优惠券</span>
           <span class="coupon-price">{{item.price}}</span>
-          <span class="coupon-use">{{item.type}}</span>
+          <span class="coupon-use">无门槛使用</span>
         </div>
       </div>
     </el-main>

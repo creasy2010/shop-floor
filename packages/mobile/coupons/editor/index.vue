@@ -1,10 +1,10 @@
 <template>
   <div class="component-editor">
     <div class="image-box">
-      <div class="add-image" @click="addItem">
+      <div class="add-image" @click="addItem" v-show="componentInfo.couponList.length < 4">
         <i class="el-icon-plus icon"></i>
       </div>
-      <div class="add-image" v-for="(item,index) in list">
+      <div class="add-image" v-for="(item,index) in componentInfo.couponList">
         <span class="text">优惠券{{index}}</span>
         <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
           <i class="el-icon-delete"></i>
@@ -25,7 +25,6 @@
     },
     data: function () {
       return {
-        list: [],
       }
     },
     computed: {
@@ -46,23 +45,29 @@
     methods: {
       // 新增
       addItem: function () {
-        this.list = this.list.concat([{
-          coupinId: 2872817173708800,
-          price: 11,
-          type: '无门槛使用',
-        }
-        ])
-        this.componentInfo.couponList = this.componentInfo.couponList.concat([{
-          coupinId: 2872817173708800,
-          price: 11,
-          type: '无门槛使用',
+        let item = {
+          assignNum: 0,
+          createTime: '2020-08-23T02:37:48.867Z',
+          fullPrice: 0,
+          id: 0,
+          isLimit: true,
+          limitNum: 0,
+          name: 'string',
+          num: 0,
+          price: 0,
+          status: 'WAIT',
+          valid: {
+            day: 0,
+            endTime: '2020-08-23T02:37:48.867Z',
+            isRange: true,
+            startTime: '2020-08-23T02:37:48.867Z',
           }
-       ])
+        }
+        this.componentInfo.couponList = this.componentInfo.couponList.concat([item])
       },
       // 删除
       deleteItem (item, index) {
         this.componentInfo.couponList.splice(index, 1)
-        this.list.splice(index, 1)
       },
     }
   }
