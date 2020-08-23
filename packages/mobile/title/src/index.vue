@@ -109,7 +109,9 @@
   }
   .hot-title{
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+      /* autoprefixer: off */
+      -webkit-box-orient:vertical;
+      /* autoprefixer: on */
     -webkit-line-clamp: 2;
     word-break: break-all;
     overflow: hidden;
@@ -119,7 +121,9 @@
   }
   .hot-spec{
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+      /* autoprefixer: off */
+      -webkit-box-orient:vertical;
+      /* autoprefixer: on */
     -webkit-line-clamp: 2;
     word-break: break-all;
     overflow: hidden;

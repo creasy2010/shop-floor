@@ -2,7 +2,7 @@
   <div class="goodsList">
     <el-main class="goods-main">
       <div class="goods-item" v-on:click="onClick(item)" v-for="item in fixGoodsList">
-        <div class="recommen" v-show="checklist ? checklist.includes(4) : []"><span class="recommen-text">{{item.brandName}}</span></div>
+        <div class="recommen" v-show="checklist ? checklist.includes(4) : []"><img class="recommen-icon" :src="item.image"/></div>
         <img class="goods-img" v-bind:src="item.image" />
         <div class="goods-info">
           <div class="goods-title" v-show="checklist ? checklist.includes(1) : true">{{item.name}}</div>
@@ -117,11 +117,9 @@
     top:0.625rem;
     border-radius :0.125rem;
   }
-  .recommen-text{
-    font-size :0.75rem;
-    transform :scale(0.65);
-    color:#fff;
-    text-align: center;
+  .recommen-icon{
+    width:100%;
+    height:100%;
   }
   .goods-img{
     width:100%;
@@ -134,7 +132,9 @@
   }
   .goods-title{
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+    /* autoprefixer: off */
+    -webkit-box-orient:vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp: 2;
     word-break: break-all;
     overflow: hidden;
