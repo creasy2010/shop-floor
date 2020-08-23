@@ -162,6 +162,10 @@
   .price{
     font-size :0.875rem;
     color:#EB0000;
+    max-width:2.5rem;
+    white-space :nowrap;
+    text-overflow :ellipsis;
+    overflow :hidden;
   }
   .right-promotion{
     height:1rem;
@@ -175,5 +179,9 @@
     font-size :0.75rem;
     transform :scale(0.833);
     color:#EB0000;
+    max-width:3.5rem;
+    white-space :nowrap;
+    text-overflow :ellipsis;
+    overflow :hidden;
   }
 </style>

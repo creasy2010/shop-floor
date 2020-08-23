@@ -1,20 +1,20 @@
 <template>
   <div class="title">
-    <el-header class="title-header">
-      <span class="cn-title">热销推荐</span>
-      <span class="en-title">Hot selling recommendation</span>
-    </el-header>
+<!--    <el-header class="title-header">-->
+<!--      <span class="cn-title">热销推荐</span>-->
+<!--      <span class="en-title">Hot selling recommendation</span>-->
+<!--    </el-header>-->
     <el-main class="hot-main">
-      <div class="hot-item" v-for="item in 2">
-        <img class="hot-img" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg" />
+      <div class="hot-item" v-for="item in fixGoodsList">
+        <img class="hot-img" :src="item.image" />
         <div class="hot-info">
-          <div class="hot-title">品牌名称商品名称品牌名称商品名称 </div>
-          <div class="hot-spec">商品描述/商品描述/商品描述</div>
-          <div class="hot-price-info">
+          <div class="hot-title" v-show="checklist ? checklist.includes(1) : true">{{item.name}}</div>
+          <div class="hot-spec">{{item.spec}}</div>
+          <div class="hot-price-info" v-show="checklist ? checklist.includes(2) : true">
               <span class="unit">RMB</span>
-              <span class="price">580.00</span>
+              <span class="price">{{item.price}}</span>
           </div>
-          <div class="right-bug">
+          <div class="right-bug" v-show="checklist ? checklist.includes(3): true">
             <span class="buy-btn">立即购买 >></span>
           </div>
         </div>
@@ -36,6 +36,13 @@
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
       checklist: {
+        type: Array,
+        editor: {
+          ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+          default: []
+        }
+      },
+      fixGoodsList: {
         type: Array,
         editor: {
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式

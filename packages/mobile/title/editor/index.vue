@@ -5,41 +5,52 @@
       <el-radio :label="1">默认风格</el-radio>
     </el-radio-group>
     <div class="goods-title">商品设置:</div>
-    <el-checkbox-group v-model="checkList" @change="changeCheck" class="check-box">
+    <el-checkbox-group @change="changeCheck" class="check-box">
       <el-checkbox v-for="item in goodsOptions" :label="item.id" :key="item.id">{{item.label}}</el-checkbox>
     </el-checkbox-group>
-    <imagechoose></imagechoose>
+    <div class="goods-title">商品数据来源:</div>
+    <div class="image-box">
+      <div class="add-image" @click="addItem">
+        <i class="el-icon-plus icon"></i>
+      </div>
+      <div class="add-image" v-for="(item,index) in componentInfo.fixGoodsList">
+        <img class="img" :src="item.image" />
+        <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
+          <i class="el-icon-delete"></i>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import Imagechoose from '../preview/lib/dialog/image-choose'
-
-
   export default {
-    components: {Imagechoose},
     name: 'maliangeditor',
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
-      componentInfo: { // 固定字段，收集所有属性值
-        type: [Object],
-        default () {
-          return {
-          }
-        }
+      componentInfo: {
+        fixGoodsList: Array,
+        sourceType: String, // fix
+        option: {
+          isShowName: Boolean,
+          isShowPrice: Boolean,
+          isShowDescribe: Boolean,
+          isShowBtn: Boolean,
+        },
       }
     },
     data: function () {
       return {
         usedatasource: false,
+        dialogFormVisible: false,
         radio: 1,
         goodsOptions: [
           {label: '显示商品名称', id: 1},
-          {label: '显示商品描述', id: 2},
-          {label: '商品价格', id: 3},
+          {label: '显示价格', id: 2},
+          {label: '显示描述信息', id: 3},
           {label: '按钮', id: 4},
         ],
-        checkList: [],
+        checkList: [1, 2, 3, 4],
       }
     },
     computed: {
@@ -53,7 +64,19 @@
       }
     },
     created () {},
-    mounted: function () {},
+    mounted: function () {
+      if (!this.componentInfo.fixGoodsList) {
+        this.$set(this.componentInfo, 'fixGoodsList', [])
+      }
+
+      if (!this.componentInfo.goodsOptions) {
+        this.$set(this.componentInfo, 'goodsOptions', {})
+      }
+
+      if (!this.componentInfo.option) {
+        this.$set(this.componentInfo, 'option', {isShowName: true, isShowPrice: true, isShowDescribe: true, isShowBtn: true})
+      }
+    },
     methods: {
       // tag切换
       handleClick: function (tab) {
@@ -66,8 +89,54 @@
       // 商品设置
       changeCheck: function (val) {
         this.checklist = val
-        if (!this.componentInfo.checklist) this.$set(this.componentInfo, 'checklist', val)
-      }
+
+      },
+      // 新增
+      addItem: function () {
+        this.dialogFormVisible = true
+
+        if (window.xExtend && window.xExtend.chooseGoods) {
+          window.xExtend.chooseGoods({
+            onSubmit: (goods) => {
+              this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat(goods)
+            }
+          })
+        } else {
+          this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat([{
+            barcode: null,
+            bn: null,
+            brandId: 2872817173708800,
+            brandName: '大众',
+            categoryId: 2866547706200064,
+            spec: '单肩包',
+            id: 2911477832302592,
+            image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
+            name: '多规格商品 红色大',
+            price: 11,
+            spuId: 2911473872142336,
+            status: 'OFFLINE',
+            statusText: '已下架',
+            stock: 1111
+          }
+          ])
+        }
+      },
+      // 删除
+      deleteItem (item, index) {
+        this.componentInfo.fixGoodsList.splice(index, 1)
+      },
+      // 关闭弹窗
+      closeModal: function (val) {
+        this.dialogFormVisible = val
+      },
+      // 获取图片数据的回调
+      getSelectData: function (item) {
+        console.log(item)
+      },
+      // 获取商品数据的回调
+      getGoodsInfo: function (item) {
+        console.log(item)
+      },
     }
   }
 </script>
@@ -119,10 +188,32 @@
     align-items :center;
     justify-content :center;
     cursor:pointer;
+    margin-right :0.35rem;
+    margin-bottom :0.35rem;
+    position:relative;
   }
   .icon{
     color:#666;
     font-size :1rem;
     font-weight:bold;
+  }
+  .img{
+    width:100%;
+  }
+  .icon-del{
+    position:absolute;
+    right:0rem;
+    top:0rem;
+    width:1.4rem;
+    height:1.4rem;
+    border-radius :100%;
+    background :rgba(000,000,000,0.4);
+    display :flex;
+    align-items :center;
+    justify-content :center;
+  }
+  .el-icon-delete{
+    font-size :0.75rem;
+    color:#fff;
   }
 </style>
