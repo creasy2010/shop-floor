@@ -102,7 +102,6 @@
         }
       },
       chooseLink (item, index) {
-        debugger
         if (window.xExtend && window.xExtend.chooseLink) {
           window.xExtend.chooseLink({
             onSubmit: ([linkInfo]) => {

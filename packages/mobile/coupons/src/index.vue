@@ -1,7 +1,7 @@
 <template>
   <div class="coupons">
     <el-main class="coupons-main">
-      <div class="coupon-item" v-for="item in couponList">
+      <div class="coupon-item" v-for="item in couponList" @click="onClick(item)">
         <div class="coupon-box">
           <span class="coupon-title">优惠券</span>
           <span class="coupon-price">{{item.price}}</span>
@@ -37,6 +37,12 @@
     editorMethods: {
     },
     methods: {
+      onClick (item) {
+        window.parent.postMessage({
+          action: 'click',
+          payload: item.linkInfo
+        }, '*')
+      }
     }
   }
 </script>
