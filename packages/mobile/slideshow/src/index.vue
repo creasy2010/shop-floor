@@ -2,7 +2,7 @@
   <div class="slideshow">
     <el-carousel class="carousel-box" :style="{height:imgHeight}">
       <el-carousel-item v-for="item in swiperImages" :key="item" @click="onClick(item)">
-        <img class="image" :src="item.img"/>
+        <img class="image" :src="item.icon"/>
       </el-carousel-item>
     </el-carousel>
   </div>
