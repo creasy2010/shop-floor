@@ -3,9 +3,10 @@
     <el-main class="coupons-main">
       <div class="coupon-item" v-for="item in couponList" @click="onClick(item)">
         <div class="coupon-box">
-          <span class="coupon-title">优惠券</span>
+          <span class="coupon-title">{{item.name}}</span>
           <span class="coupon-price">{{item.price}}</span>
-          <span class="coupon-use">无门槛使用</span>
+          <span class="coupon-use" v-if="item.isLimit">无门槛使用</span>
+          <span class="coupon-use" v-if="!item.isLimit">满{{item.fullPrice}}减{{item.price}}</span>
         </div>
       </div>
     </el-main>

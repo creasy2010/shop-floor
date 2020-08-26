@@ -7,7 +7,7 @@
         </div>
         <div class="tips">（图片格式仅限jpeg、jpg、png、gif，建议尺寸：750x335）</div>
         <div class="imgs-box" v-for="(item,index) in componentInfo.swiperImages" :key="item">
-          <img class="img" :src="item.icon" />
+          <img class="img" :src="item.url" />
           <div class="icon-box">
             <el-link type="primary" class="icon-edit" @click="editItem( index)"><i class="el-icon-picture"></i></el-link>
             <el-link type="primary" :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)"><i class="el-icon-share"></i></el-link>
