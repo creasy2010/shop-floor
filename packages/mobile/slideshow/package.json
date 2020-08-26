@@ -1,10 +1,12 @@
 {
   "name": "slideshow",
   "label": "轮播组件",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "轮播组件",
   "type": 0,
-  "tags": [12],
+  "tags": [
+    12
+  ],
   "private": true,
   "keywords": [],
   "scripts": {
@@ -14,12 +16,13 @@
     "build:pack": "gods-pen  pack --skip-push",
     "dist": "npm run build"
   },
-  "style": {
-  },
+  "style": {},
   "dependencies": {
     "element-ui": "2.4.6",
     "size-sensor": "^0.2.6",
+    "swiper": "^6.1.2",
     "vue": "^2.5.9",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-drag-resize": "^1.3.2"
   },
   "devDependencies": {
@@ -28,6 +31,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
@@ -43,7 +47,6 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.0.0",
     "file-loader": "^1.1.4",
-    "babel-preset-es2015": "^6.24.1",
     "html-webpack-plugin": "^2.30.1",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",

@@ -1,16 +1,25 @@
 <template>
   <div class="slideshow">
-    <el-carousel class="carousel-box" :style="{height:imgHeight}">
-      <el-carousel-item v-for="item in swiperImages" :key="item" @click="onClick(item)">
+    <swiper ref="mySwiper" :options="swiperOptions">
+      <swiper-slide class="carousel-box" :style="{height:imgHeight}" v-for="item in swiperImages" :key="item" @click="onClick(item)">
         <img class="image" :src="item.url"/>
-      </el-carousel-item>
-    </el-carousel>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
   </div>
 </template>
 
 <script>
   import {VueExtend} from 'godspen-lib'
+  import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+  import 'swiper/swiper.less'
+  // If you use Swiper 6.0.0 or higher
+  import 'swiper/swiper-bundle.css'
   export default {
+    components: {Swiper,SwiperSlide},
+    directives: {
+      swiper: directive
+    },
     mixins: [VueExtend.mixin],
     name: 'slideshow',
     label: process.env.LABEL,
@@ -30,16 +39,25 @@
         type: String,
       }
     },
-    computed: {
-    },
     editorMethods: {
     },
     data: function () {
       return {
+        swiperOptions: {
+          pagination: {
+            el: '.swiper-pagination'
+          },
+        },
       }
     },
-    mounted: function () {
-
+    computed: {
+      swiper () {
+        return this.$refs.mySwiper.$swiper
+      }
+    },
+    mounted () {
+      console.log(this.swiper)
+      this.swiper.slideTo(3, 1000, false)
     },
     updated: function () {
       console.log(this)

@@ -101,6 +101,7 @@
     width:50%;
   }
   .hot-info{
+    width:50%;
     display :flex;
     flex-direction :column;
     justify-content :flex-end;

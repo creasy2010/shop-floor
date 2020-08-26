@@ -85,7 +85,15 @@
             }
           })
         } else {
-          this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat([])
+          this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat([{
+            createTime: '2020-07-28T01:40:57.000+0000',
+            groupId: 2880682850025472,
+            id: 2881271517216768,
+            isVideo: false,
+            name: '时钟3.png',
+            size: 70430,
+            url: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/64d9ed5b6be34a01b8d868aabccb28fb',
+          }])
         }
       },
       // 修改图片

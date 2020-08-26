@@ -89,7 +89,6 @@
       // 商品设置
       changeCheck: function (val) {
         this.checklist = val
-
       },
       // 新增
       addItem: function () {
