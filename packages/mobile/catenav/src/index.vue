@@ -2,7 +2,7 @@
   <div class="catenav">
     <div class="nav-box">
       <div v-on:click="onClick(item)" class="nav-item" v-for="item in navs">
-        <img class="nav-img" :src="item.img|| 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"/>
+        <img class="nav-img" :src="item.img || 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"/>
         <span class="nav-text">{{ item.title }}</span>
       </div>
     </div>

@@ -55,6 +55,7 @@
     },
     data: function () {
       return {
+        dialogFormVisible: false,
       }
     },
     computed: {
@@ -73,12 +74,22 @@
     methods: {
       // 增加一个格子项
       addItem: function () {
+        this.dialogFormVisible = true
         // 如果不存在 navs 属性，应主动添加响应式属性
-        this.componentInfo.navs.push({
-          img: 'http://iph.href.lu/160x40?text=激活&fg=FF0000&bg=CCCCCC',
-          linkInfo: null,
-          title: '',
-        })
+        if (window.xExtend && window.xExtend.chooseGoods) {
+          window.xExtend.chooseGoods({
+            onSubmit: (goods) => {
+              this.componentInfo.navs = this.componentInfo.navs.concat(goods)
+            }
+          })
+        } else {
+          this.componentInfo.navs = this.componentInfo.navs.concat([{
+            img: 'http://iph.href.lu/160x40?text=激活&fg=FF0000&bg=CCCCCC',
+            linkInfo: null,
+            title: '',
+          }
+          ])
+        }
       },
       // 复制一个格子项
       copyItem () {

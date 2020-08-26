@@ -7,7 +7,7 @@
         </div>
         <div class="tips">（图片格式仅限jpeg、jpg、png、gif，建议尺寸：750x335）</div>
         <div class="imgs-box" v-for="(item,index) in componentInfo.swiperImages" :key="item">
-          <img class="img" :src="item.img" />
+          <img class="img" :src="item.url" />
           <div class="icon-box">
             <el-link type="primary" class="icon-edit" @click="editItem( index)"><i class="el-icon-picture"></i></el-link>
             <el-link type="primary" :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)"><i class="el-icon-share"></i></el-link>
@@ -76,10 +76,17 @@
       },
       // 新增
       addItem: function () {
-        this.selectImg = true
-        this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat([
-          {img: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0'}
-        ])
+        this.dialogFormVisible = true
+        // 如果不存在 navs 属性，应主动添加响应式属性
+        if (window.xExtend && window.xExtend.chooseImage) {
+          window.xExtend.chooseImage({
+            onSubmit: (data) => {
+              this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat(data)
+            }
+          })
+        } else {
+          this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat([])
+        }
       },
       // 修改图片
       editItem: function (index) {

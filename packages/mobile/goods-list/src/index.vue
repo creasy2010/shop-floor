@@ -3,7 +3,9 @@
     <el-main class="goods-main">
       <div class="goods-item" v-on:click="onClick(item)" v-for="item in fixGoodsList">
         <div class="recommen" v-show="checklist ? checklist.includes(4) : []"><img class="recommen-icon" :src="item.image"/></div>
-        <img class="goods-img" v-bind:src="item.image" />
+        <div class="goods-img-box">
+          <img class="goods-img" v-bind:src="item.image" />
+        </div>
         <div class="goods-info">
           <div class="goods-title" v-show="checklist ? checklist.includes(1) : true">{{item.name}}</div>
           <div class="goods-price-info">
@@ -121,8 +123,14 @@
     width:100%;
     height:100%;
   }
+  .goods-img-box{
+    width:calc(100% * 0.464)/2;
+    height:calc(100% * 0.464)/2;
+    max-height :calc(100% * 0.464)/2;
+  }
   .goods-img{
     width:100%;
+    height:100%;
   }
   .goods-info{
     display :flex;
@@ -141,6 +149,7 @@
     font-size:0.75rem;
     color:#000;
     margin-bottom :0.625rem;
+    height:2rem;
   }
   .goods-price-info{
     display :flex;

@@ -64,7 +64,17 @@
             startTime: '2020-08-23T02:37:48.867Z',
           }
         }
-        this.componentInfo.couponList = this.componentInfo.couponList.concat([item])
+        this.dialogFormVisible = true
+
+        if (window.xExtend && window.xExtend.chooseGoods) {
+          window.xExtend.chooseGoods({
+            onSubmit: (goods) => {
+              this.componentInfo.couponList = this.componentInfo.couponList.concat(goods)
+            }
+          })
+        } else {
+          this.componentInfo.couponList = this.componentInfo.couponList.concat([item])
+        }
       },
       // 删除
       deleteItem (item, index) {
