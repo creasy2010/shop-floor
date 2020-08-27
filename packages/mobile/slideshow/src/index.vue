@@ -45,8 +45,11 @@
       return {
         swiperOptions: {
           pagination: {
-            el: '.swiper-pagination'
+            el: '.swiper-pagination',
+            clickable: true // 允许点击小圆点跳转
           },
+          autoplay: true,
+          loop: true,
         },
       }
     },
@@ -57,7 +60,7 @@
     },
     mounted () {
       console.log(this.swiper)
-      this.swiper.slideTo(3, 1000, false)
+      // this.swiper.slideTo(3, 1000, false)
     },
     updated: function () {
       console.log(this)

@@ -6,7 +6,9 @@
 <!--    </el-header>-->
     <el-main class="hot-main">
       <div class="hot-item" v-for="item in fixGoodsList">
-        <img class="hot-img" :src="item.image" />
+        <div class="img-box">
+            <img class="hot-img" :src="item.image" />
+        </div>
         <div class="hot-info">
           <div class="hot-title" v-show="checklist ? checklist.includes(1) : true">{{item.name}}</div>
           <div class="hot-spec">{{item.spec}}</div>
@@ -97,16 +99,26 @@
      flex-direction :row;
      margin-bottom :0.75rem;
    }
+  .img-box{
+      width: 50%;
+      padding-bottom: 50%;
+      height: 0px;
+      position: relative;
+  }
   .hot-img{
-    width:50%;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
   }
   .hot-info{
     width:50%;
     display :flex;
     flex-direction :column;
-    justify-content :flex-end;
+    justify-content :center;
     padding:0rem 1rem;
     background :#e5e5e5;
+    position:relative;
   }
   .hot-title{
     display: -webkit-box;
@@ -153,6 +165,9 @@
     flex-direction :row;
     justify-content :flex-end;
     margin-bottom :0.2rem;
+      position:absolute;
+      right:0.3rem;
+      bottom:0.5rem;
   }
   .buy-btn{
     font-size :0.75rem;

@@ -124,13 +124,16 @@
     height:100%;
   }
   .goods-img-box{
-    width:calc(100% * 0.464)/2;
-    height:calc(100% * 0.464)/2;
-    max-height :calc(100% * 0.464)/2;
+    width: 100%;
+    padding-bottom: 100%;
+    height: 0px;
+    position: relative;
   }
   .goods-img{
     width:100%;
     height:100%;
+    position:absolute;
+    top:0;
   }
   .goods-info{
     display :flex;

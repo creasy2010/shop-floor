@@ -102,14 +102,14 @@
         this.componentInfo.navs.splice(index, 1)
       },
       chooseImage (item, index) {
-        if (window.xExtend && window.xExtend.chooseImage) {
-          window.xExtend.chooseImage({
+        if (window.xExtend && window.xExtend.chooseGoods) {
+          window.xExtend.chooseGoods({
             onSubmit: ([image]) => {
-              this.componentInfo.navs[index].img = image
+              this.componentInfo.navs[index].image = image
             }
           })
         } else {
-          this.componentInfo.navs[index].img = 'http://iph.href.lu/160x40?text=激活&fg=FF0000&bg=CCCCCC'
+          this.componentInfo.navs[index].image = 'http://iph.href.lu/160x40?text=激活&fg=FF0000&bg=CCCCCC'
         }
       },
       chooseLink (item, index) {

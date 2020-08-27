@@ -142,26 +142,31 @@
 
 <style lang="stylus" rel="stylesheet/stylus" type="text/stylus" scoped>
   .component-editor {
+    background :#272727;
+    width:100%;
+    overflow :hidden;
   }
   .goods-title{
     font-size :1rem;
-    color:#333;
+    color:#ccc;
     margin-bottom :0.25rem;
     padding:0.4rem 0;
   }
   .radio-box{
     width:100%;
-    background: #f9f9f9;
     padding: 0.4rem .3rem 0.2rem;
     margin-bottom :0.75rem;
   }
   .check-box{
     width:100%;
-    background: #f9f9f9;
+    border:1px solid #6a6a6a;
     padding: 0.4rem .3rem 0.2rem;
     margin-bottom :0.75rem;
     display :flex;
     flex-direction :column;
+  }
+  .check-box .el-checkbox__label{
+    color:#f0af41;
   }
   .el-checkbox{
     margin-bottom :0.25rem;
@@ -171,7 +176,7 @@
   }
   .image-box{
     width:100%;
-    background: #f9f9f9;
+    border:1px solid #6a6a6a;
     padding: 0.6rem .3rem;
     margin-bottom :0.75rem;
     display :flex;
