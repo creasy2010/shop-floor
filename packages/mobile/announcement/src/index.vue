@@ -38,7 +38,7 @@
     },
     data: function () {
       return {
-        hornIcon: 'src/assets/notice.png'
+        hornIcon: './src/assets/notice.png'
       }
     },
     computed: {

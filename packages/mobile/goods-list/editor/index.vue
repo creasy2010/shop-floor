@@ -14,7 +14,7 @@
         <i class="el-icon-plus icon"></i>
       </div>
       <div class="add-image" v-for="(item,index) in componentInfo.fixGoodsList">
-        <img class="img" :src="item.image" />
+        <img class="image" :src="item.image" />
         <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
           <i class="el-icon-delete"></i>
         </div>
@@ -208,8 +208,9 @@
     font-size :1rem;
     font-weight:bold;
   }
-  .img{
+  .image{
     width:100%;
+    height:100%;
   }
   .icon-del{
     position:absolute;

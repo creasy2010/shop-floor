@@ -1,6 +1,6 @@
 <template>
   <div class="slideshow">
-    <swiper ref="mySwiper" :options="swiperOptions">
+    <swiper ref="mySwiper" v-if="swiperImages.length > 1" :options="swiperOptions">
       <swiper-slide class="carousel-box" :style="{height:imgHeight}" v-for="item in swiperImages" :key="item" @click="onClick(item)">
         <img class="image" :src="item.url"/>
       </swiper-slide>
@@ -44,11 +44,12 @@
     data: function () {
       return {
         swiperOptions: {
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true // 允许点击小圆点跳转
+          observer: true,
+          observeParents: true,
+          autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
           },
-          autoplay: true,
           loop: true,
         },
       }

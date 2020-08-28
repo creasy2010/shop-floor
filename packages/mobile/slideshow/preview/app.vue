@@ -5,7 +5,7 @@
     <div>
       <el-menu
         :default-active="sizeIndex"
-        class="el-menu-demo"
+        class="el-menu-demo"F
         mode="horizontal"
         @select="handleSelect"
       >

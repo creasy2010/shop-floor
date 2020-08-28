@@ -85,7 +85,7 @@ let config = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 1,
+          limit: 200,
           name: '[name].[hash:7].[ext]'
         }
       },

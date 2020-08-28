@@ -76,8 +76,8 @@
       addItem: function () {
         this.dialogFormVisible = true
         // 如果不存在 navs 属性，应主动添加响应式属性
-        if (window.xExtend && window.xExtend.chooseGoods) {
-          window.xExtend.chooseGoods({
+        if (window.xExtend && window.xExtend.chooseImage) {
+          window.xExtend.chooseImage({
             onSubmit: (goods) => {
               this.componentInfo.navs = this.componentInfo.navs.concat(goods)
             }
@@ -102,8 +102,8 @@
         this.componentInfo.navs.splice(index, 1)
       },
       chooseImage (item, index) {
-        if (window.xExtend && window.xExtend.chooseGoods) {
-          window.xExtend.chooseGoods({
+        if (window.xExtend && window.xExtend.chooseImage) {
+          window.xExtend.chooseImage({
             onSubmit: ([image]) => {
               this.componentInfo.navs[index].image = image
             }

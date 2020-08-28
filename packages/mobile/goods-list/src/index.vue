@@ -168,11 +168,10 @@
   .unit{
     font-size :0.5rem;
     color:#000;
-    transform :scale(0.67);
     transform-origin :left;
   }
   .price{
-    font-size :0.875rem;
+    font-size :0.938rem;
     color:#EB0000;
     max-width:2.5rem;
     white-space :nowrap;
