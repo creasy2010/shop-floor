@@ -1,6 +1,6 @@
 <template>
   <div class="slideshow">
-    <swiper ref="mySwiper" v-if="swiperImages.length > 1" :options="swiperOptions">
+    <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide class="carousel-box" :style="{height:imgHeight}" v-for="item in swiperImages" :key="item" @click="onClick(item)">
         <img class="image" :src="item.url"/>
       </swiper-slide>

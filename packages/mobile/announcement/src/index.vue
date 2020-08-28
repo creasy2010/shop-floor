@@ -1,7 +1,7 @@
 <template>
   <div class="annouceComment">
     <div class="annouce-box">
-      <img class="notice-icon" :src="hornIcon"/>
+      <img class="notice-icon" :src="img"/>
       <span class="notice-label">{{title}}</span>
       <!-- 滚动文字区域 -->
       <div class="notice-content">
@@ -38,7 +38,7 @@
     },
     data: function () {
       return {
-        hornIcon: './src/assets/notice.png'
+        img: require('./assets/notice.png')
       }
     },
     computed: {

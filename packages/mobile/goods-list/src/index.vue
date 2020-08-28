@@ -173,7 +173,7 @@
   .price{
     font-size :0.938rem;
     color:#EB0000;
-    max-width:2.5rem;
+    max-width:3rem;
     white-space :nowrap;
     text-overflow :ellipsis;
     overflow :hidden;

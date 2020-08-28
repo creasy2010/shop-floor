@@ -22,7 +22,7 @@
           </el-main>
           <el-main class="main">
             <img class="choose-img"
-                    :src="item.img || 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1572709130,55384343&fm=26&gp=0.jpg'"
+                    :src="item.url"
                     :fit="fit"
                     @click="chooseImage(item, index)" />
             <el-input v-model="item.title" placeholder="请输入内容"></el-input>
