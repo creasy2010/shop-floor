@@ -84,7 +84,7 @@
   }
   .carousel-box{
     width:100%;
-    /*height:23.97rem;*/
+    height:23.97rem;
   }
   .image{
     width:100%;
