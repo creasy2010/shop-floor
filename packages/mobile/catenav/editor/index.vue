@@ -113,14 +113,18 @@
         }
       },
       chooseLink (item, index) {
-        if (window.xExtend && window.xExtend.chooseLink) {
-          window.xExtend.chooseLink({
-            onSubmit: ([linkInfo]) => {
-              this.componentInfo.navs[index].linkInfo = linkInfo
-            }
-          })
+        if (this.componentInfo.navs[index].linkInfo) {
+          this.componentInfo.navs[index].linkInfo = null
         } else {
-          this.componentInfo.navs[index].linkInfo = {}
+          if (window.xExtend && window.xExtend.chooseLink) {
+            window.xExtend.chooseLink({
+              onSubmit: ([linkInfo]) => {
+                this.componentInfo.navs[index].linkInfo = linkInfo
+              }
+            })
+          } else {
+            this.componentInfo.navs[index].linkInfo = {}
+          }
         }
       }
     }

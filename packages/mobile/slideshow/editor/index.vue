@@ -9,9 +9,15 @@
         <div class="imgs-box" v-for="(item,index) in componentInfo.swiperImages" :key="item">
           <img class="img" :src="item.url" />
           <div class="icon-box">
-            <el-link type="primary" class="icon-edit" @click="editItem( index)"><i class="el-icon-picture"></i></el-link>
-            <el-link type="primary" :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)"><i class="el-icon-share"></i></el-link>
-            <el-link type="primary" class="icon-del" @click="deleteItem(item, index)" :id={index}><i class="el-icon-delete"></i></el-link>
+            <div class="icon-edit" @click="editItem(index)">
+              <i class="el-icon-picture"></i>
+            </div>
+            <div :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)" :id={index}>
+              <i class="el-icon-share"></i>
+            </div>
+            <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
+              <i class="el-icon-delete"></i>
+            </div>
           </div>
         </div>
       </el-tab-pane>
@@ -114,14 +120,18 @@
       },
       // 选择链接
       chooseLink (item, index) {
-        if (window.xExtend && window.xExtend.chooseLink) {
-          window.xExtend.chooseLink({
-            onSubmit: ([linkInfo]) => {
-              this.componentInfo.swiperImages[index].linkInfo = linkInfo
-            }
-          })
+        if (this.componentInfo.swiperImages[index].linkInfo) {
+          this.componentInfo.swiperImages[index].linkInfo = null
         } else {
-          this.componentInfo.swiperImages[index].linkInfo = {}
+          if (window.xExtend && window.xExtend.chooseLink) {
+            window.xExtend.chooseLink({
+              onSubmit: ([linkInfo]) => {
+                this.componentInfo.swiperImages[index].linkInfo = linkInfo
+              }
+            })
+          } else {
+            this.componentInfo.swiperImages[index].linkInfo = {}
+          }
         }
         this.componentInfo.swiperImages = this.componentInfo.swiperImages.concat([])
       }
@@ -184,7 +194,7 @@
     margin-right :0.3rem;
     cursor :pointer;
   }
-  i{
+  .el-icon-share,.el-icon-picture,.el-icon-delete{
     font-size :0.75rem;
     color:#fff;
   }

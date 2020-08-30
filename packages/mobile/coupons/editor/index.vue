@@ -7,8 +7,12 @@
       <div class="add-image" v-for="(item,index) in componentInfo.couponList">
         <span class="text">优惠券{{index}}</span>
         <div class="icon-box">
-          <el-link type="primary" :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)"><i class="el-icon-share"></i></el-link>
-          <el-link type="primary" class="icon-del" @click="deleteItem(item, index)" :id={index}><i class="el-icon-delete"></i></el-link>
+          <div :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)" :id={index}>
+            <i class="el-icon-share"></i>
+          </div>
+          <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
+            <i class="el-icon-delete"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -82,14 +86,18 @@
       },
       // 选择链接
       chooseLink (item, index) {
-        if (window.xExtend && window.xExtend.chooseLink) {
-          window.xExtend.chooseLink({
-            onSubmit: ([linkInfo]) => {
-              this.componentInfo.couponList[index].linkInfo = linkInfo
-            }
-          })
+        if (this.componentInfo.couponList[index].linkInfo) {
+          this.componentInfo.couponList[index].linkInfo = null
         } else {
-          this.componentInfo.couponList[index].linkInfo = {}
+          if (window.xExtend && window.xExtend.chooseLink) {
+            window.xExtend.chooseLink({
+              onSubmit: ([linkInfo]) => {
+                this.componentInfo.couponList[index].linkInfo = linkInfo
+              }
+            })
+          } else {
+            this.componentInfo.couponList[index].linkInfo = {}
+          }
         }
         this.componentInfo.couponList = this.componentInfo.couponList.concat([])
       }
@@ -150,7 +158,7 @@
     margin-right :0.3rem;
     cursor :pointer;
   }
-  i{
+  .el-icon-share,.el-icon-delete{
     font-size :0.75rem;
     color:#fff;
   }

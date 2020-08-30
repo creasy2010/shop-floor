@@ -12,8 +12,13 @@
       </div>
       <div class="add-image" v-for="(item,index) in componentInfo.photsList">
         <img class="image" :src="item.url" />
-        <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
-          <i class="el-icon-delete"></i>
+        <div class="icon-box">
+          <div :class="{ 'active': item.linkInfo,'icon-link':true }" @click="chooseLink(item, index)" :id={index}>
+            <i class="el-icon-share"></i>
+          </div>
+          <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
+            <i class="el-icon-delete"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +85,23 @@
             url: 'https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg',
           }])
         }
+      },
+      // 选择链接
+      chooseLink (item, index) {
+        if (this.componentInfo.photsList[index].linkInfo) {
+          this.componentInfo.photsList[index].linkInfo = null
+        } else {
+          if (window.xExtend && window.xExtend.chooseLink) {
+            window.xExtend.chooseLink({
+              onSubmit: ([linkInfo]) => {
+                this.componentInfo.photsList[index].linkInfo = linkInfo
+              }
+            })
+          } else {
+            this.componentInfo.photsList[index].linkInfo = {}
+          }
+        }
+        this.componentInfo.photsList = this.componentInfo.photsList.concat([])
       },
       // 删除
       deleteItem (item, index) {
@@ -157,20 +179,30 @@
     width:100%;
     height:100%;
   }
-  .icon-del{
+  .icon-box{
     position:absolute;
     right:0rem;
-    top:0rem;
+    top:0.2rem;
+    display :flex;
+    flex-direction :row;
+    align-items :center;
+  }
+  .icon-del,.icon-link{
     width:1.4rem;
     height:1.4rem;
     border-radius :100%;
-    background :rgba(000,000,000,0.4);
+    background :#333;
     display :flex;
     align-items :center;
     justify-content :center;
+    margin-right :0.3rem;
+    cursor :pointer;
   }
-  .el-icon-delete{
+  .el-icon-delete,.el-icon-share{
     font-size :0.75rem;
     color:#fff;
+  }
+  .active i{
+    color:#108ee9;
   }
 </style>
