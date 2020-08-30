@@ -11,7 +11,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --progress",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
 
-    "build:pack": "gods-pen  pack --skip-push=false --verbose",
+    "build:pack": "npm run build && gods-pen  pack --skip-push=false --verbose",
     "start": "npm run dev",
     "dist": "npm run build"
   },
