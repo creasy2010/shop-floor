@@ -1,8 +1,8 @@
 <template>
   <div class="title">
-    <el-header class="title-header">
-      <span class="cn-title">热销推荐</span>
-      <span class="en-title">Hot selling recommendation</span>
+    <el-header v-if="style===1" class="title-header">
+      <span class="cn-title">{{title}}</span>
+      <span class="en-title">{{subTitle}}</span>
     </el-header>
   </div>
 </template>
@@ -19,18 +19,25 @@
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
-      checklist: {
-        type: Array,
+      style: {
+        type: Number,
         editor: {
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
-          default: []
+          default: 1
         }
       },
-      fixGoodsList: {
-        type: Array,
+      title: {
+        type: String,
         editor: {
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
-          default: []
+          default: '一级标题'
+        }
+      },
+      subTitle: {
+        type: String,
+        editor: {
+          ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
+          default: '二级标题'
         }
       },
     },
@@ -39,7 +46,6 @@
     editorMethods: {
     },
     mounted: function () {
-      console.log(this.checklist)
     },
     methods: {
     }

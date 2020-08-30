@@ -1,9 +1,11 @@
 <template>
   <div class="component-editor">
-    <div class="goods-title">列表样式:</div>
-    <el-radio-group v-model="radio" @change="changeRadio" class="radio-box">
+    <div class="goods-title">样式:</div>
+    <el-radio-group v-model="componentInfo.style" @change="changeRadio" class="radio-box">
       <el-radio :label="1">默认风格</el-radio>
     </el-radio-group>
+
+
     <div class="goods-title">商品设置:</div>
     <el-checkbox-group @change="changeCheck" class="check-box">
       <el-checkbox v-for="item in goodsOptions" :label="item.id" :key="item.id">{{item.label}}</el-checkbox>
@@ -25,117 +27,36 @@
 
 <script>
   export default {
-    name: 'maliangeditor',
+    name: 'title',
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
       componentInfo: {
-        fixGoodsList: Array,
-        sourceType: String, // fix
-        option: {
-          isShowName: Boolean,
-          isShowPrice: Boolean,
-          isShowDescribe: Boolean,
-          isShowBtn: Boolean,
-        },
+        style: Number,
+        title: String,
+        subTitle: String,
       }
     },
     data: function () {
       return {
-        usedatasource: false,
-        dialogFormVisible: false,
-        radio: 1,
-        goodsOptions: [
-          {label: '显示商品名称', id: 1},
-          {label: '显示价格', id: 2},
-          {label: '显示描述信息', id: 3},
-          {label: '按钮', id: 4},
-        ],
-        checkList: [1, 2, 3, 4],
       }
     },
     computed: {
     },
     watch: {
-      'componentInfo': {
-        handler (v) {
-          console.log(v)
-        },
-        deep: true
-      }
     },
     created () {},
     mounted: function () {
-      if (!this.componentInfo.fixGoodsList) {
-        this.$set(this.componentInfo, 'fixGoodsList', [])
+      if (!this.componentInfo.style) {
+        this.$set(this.componentInfo, 'style', 1)
       }
-
-      if (!this.componentInfo.goodsOptions) {
-        this.$set(this.componentInfo, 'goodsOptions', {})
+      if (!this.componentInfo.title) {
+        this.$set(this.componentInfo, 'title', "一级标题")
       }
-
-      if (!this.componentInfo.option) {
-        this.$set(this.componentInfo, 'option', {isShowName: true, isShowPrice: true, isShowDescribe: true, isShowBtn: true})
+      if (!this.componentInfo.subTitle) {
+        this.$set(this.componentInfo, 'subTitle', "二级标题")
       }
     },
     methods: {
-      // tag切换
-      handleClick: function (tab) {
-        this.activeName = tab.name
-      },
-      // 风格切换
-      changeRadio: function (val) {
-        this.radio = val
-      },
-      // 商品设置
-      changeCheck: function (val) {
-        this.checklist = val
-      },
-      // 新增
-      addItem: function () {
-        this.dialogFormVisible = true
-
-        if (window.xExtend && window.xExtend.chooseGoods) {
-          window.xExtend.chooseGoods({
-            onSubmit: (goods) => {
-              this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat(goods)
-            }
-          })
-        } else {
-          this.componentInfo.fixGoodsList = this.componentInfo.fixGoodsList.concat([{
-            barcode: null,
-            bn: null,
-            brandId: 2872817173708800,
-            brandName: '大众',
-            categoryId: 2866547706200064,
-            spec: '单肩包',
-            id: 2911477832302592,
-            image: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/53eef806f86e48b585852f5a816a60a0',
-            name: '多规格商品 红色大',
-            price: 11,
-            spuId: 2911473872142336,
-            status: 'OFFLINE',
-            statusText: '已下架',
-            stock: 1111
-          }
-          ])
-        }
-      },
-      // 删除
-      deleteItem (item, index) {
-        this.componentInfo.fixGoodsList.splice(index, 1)
-      },
-      // 关闭弹窗
-      closeModal: function (val) {
-        this.dialogFormVisible = val
-      },
-      // 获取图片数据的回调
-      getSelectData: function (item) {
-        console.log(item)
-      },
-      // 获取商品数据的回调
-      getGoodsInfo: function (item) {
-        console.log(item)
-      },
     }
   }
 </script>
