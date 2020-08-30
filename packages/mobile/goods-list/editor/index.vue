@@ -1,8 +1,9 @@
 <template>
   <div class="component-editor">
     <div class="goods-title">列表样式:</div>
-    <el-radio-group v-model="radio" @change="changeRadio" class="radio-box">
-      <el-radio :label="1">默认风格</el-radio>
+    <el-radio-group v-model="componentInfo.style" @change="changeRadio" class="radio-box">
+      <el-radio :label="1">默认</el-radio>
+      <el-radio :label="2">大图</el-radio>
     </el-radio-group>
     <div class="goods-title">商品设置:</div>
     <el-checkbox-group v-model="checkList" @change="changeCheck" class="check-box">
@@ -21,13 +22,10 @@
       </div>
     </div>
     <linkChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @goodsInfo="getGoodsInfo"></linkChoose>
-<!--      <ImageChoose :dialogFormVisible="dialogFormVisible" @close="closeModal" @selectData="getSelectData"></ImageChoose>-->
   </div>
 </template>
 
 <script>
-  // import LinkChoose from '../preview/lib/dialog/link-choose'
-  // import ImageChoose from '../preview/lib/dialog/image-choose'
   export default {
     components: {
        // LinkChoose
@@ -36,6 +34,7 @@
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
       componentInfo: {
+        style: Number, // fix
         fixGoodsList: Array,
         sourceType: String, // fix
         option: {
@@ -49,7 +48,7 @@
       return {
         usedatasource: false,
         dialogFormVisible: false,
-        radio: 1,
+        style: 1,
         goodsOptions: [
           {label: '显示商品名称', id: 1},
           {label: '显示价格', id: 2},
