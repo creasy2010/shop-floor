@@ -1,27 +1,13 @@
 <template>
   <div class="component-editor">
     <div class="goods-title">样式:</div>
-    <el-radio-group v-model="componentInfo.style" @change="changeRadio" class="radio-box">
+    <el-radio-group v-model="componentInfo.style" class="radio-box">
       <el-radio :label="1">默认风格</el-radio>
     </el-radio-group>
-
-
-    <div class="goods-title">商品设置:</div>
-    <el-checkbox-group @change="changeCheck" class="check-box">
-      <el-checkbox v-for="item in goodsOptions" :label="item.id" :key="item.id">{{item.label}}</el-checkbox>
-    </el-checkbox-group>
-    <div class="goods-title">商品数据来源:</div>
-    <div class="image-box">
-      <div class="add-image" @click="addItem">
-        <i class="el-icon-plus icon"></i>
-      </div>
-      <div class="add-image" v-for="(item,index) in componentInfo.fixGoodsList">
-        <img class="img" :src="item.image" />
-        <div class="icon-del" @click="deleteItem(item, index)" :id={index}>
-          <i class="el-icon-delete"></i>
-        </div>
-      </div>
-    </div>
+    一级标题：
+    <el-input v-model="componentInfo.title" placeholder="一级标题"></el-input>
+    二级标题:
+    <el-input v-model="componentInfo.subTitle" placeholder="二级标题"></el-input>
   </div>
 </template>
 
@@ -50,10 +36,10 @@
         this.$set(this.componentInfo, 'style', 1)
       }
       if (!this.componentInfo.title) {
-        this.$set(this.componentInfo, 'title', "一级标题")
+        this.$set(this.componentInfo, 'title', '一级标题')
       }
       if (!this.componentInfo.subTitle) {
-        this.$set(this.componentInfo, 'subTitle', "二级标题")
+        this.$set(this.componentInfo, 'subTitle', '二级标题')
       }
     },
     methods: {

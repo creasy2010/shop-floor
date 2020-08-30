@@ -1,27 +1,9 @@
 <template>
   <div class="title">
-    <el-header v-if="style===1" class="title-header">
+    <el-header v-if="(!style || style===1)" class="title-header">
       <span class="cn-title">{{title}}</span>
       <span class="en-title">{{subTitle}}</span>
     </el-header>
-    <el-main class="hot-main">
-      <div class="hot-item" v-for="item in fixGoodsList">
-        <div class="img-box">
-            <img class="hot-img" :src="item.image" />
-        </div>
-        <div class="hot-info">
-          <div class="hot-title" v-show="checklist ? checklist.includes(1) : true">{{item.name}}</div>
-          <div class="hot-spec">{{item.spec}}</div>
-          <div class="hot-price-info" v-show="checklist ? checklist.includes(2) : true">
-              <span class="unit">RMB</span>
-              <span class="price">{{item.price}}</span>
-          </div>
-          <div class="right-bug" v-show="checklist ? checklist.includes(3): true">
-            <span class="buy-btn">立即购买 >></span>
-          </div>
-        </div>
-      </div>
-    </el-main>
   </div>
 </template>
 

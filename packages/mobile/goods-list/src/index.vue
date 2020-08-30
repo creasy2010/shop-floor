@@ -21,7 +21,7 @@
       </div>
     </el-main>
     <el-main v-if="style === 2"  class="hot-main">
-      <div class="hot-item" v-for="item in fixGoodsList" >
+      <div class="hot-item" v-on:click="onClick(item)" v-for="item in fixGoodsList" >
         <div class="img-box">
           <img class="hot-img" :src="item.image" />
         </div>
