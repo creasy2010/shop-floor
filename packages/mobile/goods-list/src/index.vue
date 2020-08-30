@@ -1,6 +1,6 @@
 <template>
   <div class="goodsList">
-    <el-main v-if="style === 1" class="goods-main">
+    <el-main v-if="styleCode == 1" class="goods-main">
       <div class="goods-item" v-on:click="onClick(item)" v-for="item in fixGoodsList">
         <div class="recommen" v-show="checklist ? checklist.includes(4) : []"><img class="recommen-icon" :src="item.image"/></div>
         <div class="goods-img-box">
@@ -20,7 +20,7 @@
         </div>
       </div>
     </el-main>
-    <el-main v-if="style === 2"  class="hot-main">
+    <el-main v-if="styleCode == 2"  class="hot-main">
       <div class="hot-item" v-on:click="onClick(item)" v-for="item in fixGoodsList" >
         <div class="img-box">
           <img class="hot-img" :src="item.image" />
@@ -48,16 +48,16 @@
     mixins: [VueExtend.mixin],
     name: 'goods-list',
     label: process.env.LABEL,
-    style: process.env.STYLE,
+    // style: process.env.STYLE,
     stack: null, // 是否是堆叠模式 ，false：孩子元素会按楼层一个个向下排布， true: 孩子元素绝对定位，随意放置位置
     childLimit: 9999,  // 孩子元素最大限制数
     leaf: false, // 是否是叶子节点，为true的时候该节点下面不能添加节点
     props: {
-      style:{
+      styleCode: {
         type: Number,
         editor: {
           ignore: true, // 在 *属性配置组件* 中实现该属性的输入逻辑和样式
-          default: []
+          default: 1
         }
       },
       checklist: {

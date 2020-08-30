@@ -1,7 +1,7 @@
 <template>
   <div class="component-editor">
     <div class="goods-title">列表样式:</div>
-    <el-radio-group v-model="componentInfo.style" @change="changeRadio" class="radio-box">
+    <el-radio-group v-model="componentInfo.styleCode" class="radio-box">
       <el-radio :label="1">默认</el-radio>
       <el-radio :label="2">大图</el-radio>
     </el-radio-group>
@@ -34,7 +34,7 @@
     props: {
       // 编辑器会传递给编辑面板组件的属性值，编辑器可以修改这些值来达到控制组件数据的作用
       componentInfo: {
-        style: Number, // fix
+        styleCode: Number, // fix
         fixGoodsList: Array,
         sourceType: String, // fix
         option: {
@@ -48,7 +48,6 @@
       return {
         usedatasource: false,
         dialogFormVisible: false,
-        style: 1,
         goodsOptions: [
           {label: '显示商品名称', id: 1},
           {label: '显示价格', id: 2},
@@ -69,6 +68,9 @@
       }
     },
     mounted: function () {
+      if (!this.componentInfo.styleCode) {
+        this.$set(this.componentInfo, 'styleCode', 1)
+      }
       if (!this.componentInfo.fixGoodsList) {
         this.$set(this.componentInfo, 'fixGoodsList', [])
       }
@@ -86,14 +88,10 @@
       handleClick: function (tab) {
         this.activeName = tab.name
       },
-      // 风格切换
-      changeRadio: function (val) {
-        this.radio = val
-      },
       // 商品设置
       changeCheck: function (val) {
         this.checklist = val
-        this.componentInfo.checklist = this.componentInfo.fixGoodsList.concat(val)
+        this.$set(this.componentInfo, 'checklist', val)
       },
       // 新增
       addItem: function () {

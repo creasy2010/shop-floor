@@ -1,7 +1,7 @@
 {
   "name": "goods-list",
   "label": "商品列表",
-  "version": "1.2.4",
+  "version": "1.2.9",
   "description": "商品列表",
   "type": 0,
   "tags": [18],
@@ -13,7 +13,7 @@
     "start": "npm run dev",
     "vv": "gods-pen --help -v",
 
-    "build:pack": "gods-pen  pack --skip-push=false --verbose",
+    "build:pack": "gods-pen  pack --skip-push=true",
     "dist": "npm run build"
   },
   "style": {

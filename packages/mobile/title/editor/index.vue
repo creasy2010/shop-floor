@@ -1,7 +1,7 @@
 <template>
   <div class="component-editor">
     <div class="goods-title">样式:</div>
-    <el-radio-group v-model="componentInfo.style" class="radio-box">
+    <el-radio-group v-model="componentInfo.style" @change="changeRadio"  class="radio-box">
       <el-radio :label="1">默认风格</el-radio>
     </el-radio-group>
     一级标题：
@@ -43,6 +43,10 @@
       }
     },
     methods: {
+      // 风格切换
+      changeRadio: function (val) {
+        this.$set(this.componentInfo, 'style', val)
+      },
     }
   }
 </script>
