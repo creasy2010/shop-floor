@@ -55,7 +55,7 @@
     },
     mounted: function () {
       if (!this.componentInfo.imgHeight) {
-        this.$set(this.componentInfo, 'imgHeight', '5.25rem')
+        this.$set(this.componentInfo, 'imgHeight', '23.97rem')
       }
       if (!this.componentInfo.swiperImages) {
         this.$set(this.componentInfo, 'swiperImages', [])
@@ -69,7 +69,7 @@
       // 尺寸切换
       changeradio: function (val) {
         this.radio = val
-        let height = '5.25rem' // 默认高度
+        let height = '23.97rem' // 默认高度
         if (val == 2) height = '8.375rem'  // 大图尺寸
         if (val == 3) height = '3.6875rem'
         this.componentInfo.imgHeight = height
@@ -92,7 +92,7 @@
             isVideo: false,
             name: '时钟3.png',
             size: 70430,
-            url: 'https://kshop-dev.oss-cn-beijing.aliyuncs.com/dev/64d9ed5b6be34a01b8d868aabccb28fb',
+            url: 'https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg',
           }])
         }
       },

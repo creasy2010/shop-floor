@@ -1,7 +1,7 @@
 <template>
   <div class="annouceComment">
     <div class="annouce-box">
-      <img class="notice-icon" :src="img"/>
+      <img class="notice-icon" src="../src/assets/notice.png"/>
       <span class="notice-label">{{title}}</span>
       <!-- 滚动文字区域 -->
       <div class="notice-content">

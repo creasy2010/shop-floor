@@ -128,7 +128,6 @@
       // 删除
       deleteItem (item, index) {
         this.componentInfo.fixGoodsList.splice(index, 1)
-        this.list.splice(index, 1)
       },
       // 关闭弹窗
       closeModal: function (val) {

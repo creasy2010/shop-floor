@@ -4,6 +4,24 @@
       <span class="cn-title">{{title}}</span>
       <span class="en-title">{{subTitle}}</span>
     </el-header>
+    <el-main class="hot-main">
+      <div class="hot-item" v-for="item in fixGoodsList">
+        <div class="img-box">
+            <img class="hot-img" :src="item.image" />
+        </div>
+        <div class="hot-info">
+          <div class="hot-title" v-show="checklist ? checklist.includes(1) : true">{{item.name}}</div>
+          <div class="hot-spec">{{item.spec}}</div>
+          <div class="hot-price-info" v-show="checklist ? checklist.includes(2) : true">
+              <span class="unit">RMB</span>
+              <span class="price">{{item.price}}</span>
+          </div>
+          <div class="right-bug" v-show="checklist ? checklist.includes(3): true">
+            <span class="buy-btn">立即购买 >></span>
+          </div>
+        </div>
+      </div>
+    </el-main>
   </div>
 </template>
 
@@ -74,5 +92,96 @@
     font-size :0.375rem;
     color:#fff;
     transform :scale(0.5);
+  }
+  .hot-main{
+    width:100%;
+    background :#f4f4f4;
+    padding:1.5625rem 0.75rem;
+    display flex;
+    flex-direction: column;
+  }
+  .hot-item{
+     display :flex;
+     flex-direction :row;
+     margin-bottom :0.75rem;
+   }
+   .hot-item:last-child{
+     margin-bottom :0;
+   }
+  .img-box{
+      width: 50%;
+      padding-bottom: 50%;
+      height: 0px;
+      position: relative;
+  }
+  .hot-img{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+  }
+  .hot-info{
+    width:50%;
+    display :flex;
+    flex-direction :column;
+    justify-content :center;
+    padding:0rem 1rem;
+    background :#e5e5e5;
+    position:relative;
+  }
+  .hot-title{
+    display: -webkit-box;
+      /* autoprefixer: off */
+      -webkit-box-orient:vertical;
+      /* autoprefixer: on */
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    overflow: hidden;
+    font-size:0.75rem;
+    color:#000;
+    margin-bottom :0.625rem;
+  }
+  .hot-spec{
+    display: -webkit-box;
+      /* autoprefixer: off */
+      -webkit-box-orient:vertical;
+      /* autoprefixer: on */
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    overflow: hidden;
+    font-size:0.75rem;
+    transform :scale(0.83);
+    color:#666;
+    transform-origin :left;
+  }
+  .hot-price-info{
+    display :flex;
+    flex-direction :row;
+    align-items :center;
+  }
+  .unit{
+    font-size :0.5rem;
+    color:#000;
+    transform :scale(0.67);
+    transform-origin :left;
+  }
+  .price{
+    font-size :0.875rem;
+    color:#EB0000;
+  }
+  .right-bug{
+    display :flex;
+    flex-direction :row;
+    justify-content :flex-end;
+    margin-bottom :0.2rem;
+      position:absolute;
+      right:0.3rem;
+      bottom:0.5rem;
+  }
+  .buy-btn{
+    font-size :0.75rem;
+    color:#000;
+    transform :scale(0.5);
+    transform-origin :right;
   }
 </style>
